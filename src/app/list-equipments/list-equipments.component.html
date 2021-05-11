@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Lista de equipamentos</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tombamento</th>
+            <!--th>Telefone</th>
+            <th>CNPJ</th>
+            <th>Email</th-->
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let equipment of equipments | async">
+            <td>{{equipment.id}}</td>
+            <td>{{equipment.code}}</td>
+            <!--td>{{fornecedor.telefone}}</td>
+            <td>{{fornecedor.cnpj}}</td>
+            <td>{{fornecedor.email}}</td-->
+            <td><button (click)="delete(equipment.id)" class="btn btn-danger">Deletar</button>
+                <button (click)="update(equipment.id)" class="btn btn-info" style="margin-left: 10px">Alterar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

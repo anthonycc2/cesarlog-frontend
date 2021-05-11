@@ -51,6 +51,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -105,5 +106,8 @@
       }
     }
   },
-  "defaultProject": "cesarlog-frontend"
+  "defaultProject": "cesarlog-frontend",
+  "cli": {
+    "analytics": "ac4adb83-c8c2-49e4-8f3b-89640f8a960a"
+  }
 }

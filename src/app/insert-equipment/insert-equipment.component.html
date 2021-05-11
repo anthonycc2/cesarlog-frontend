@@ -1,0 +1,51 @@
+<div [hidden]="submittedForm" class="form-general">
+  <h1><strong>Cadastrar Equipamento</strong></h1>
+  <form (ngSubmit)="onSubmit()">
+    <table>
+      <tr>
+        <td><label for="code">Tombamento:</label></td>
+        <td><input type="text" class="form-control" id="code" required [(ngModel)]="equipment.code" name="code"></td>
+      </tr>
+	  <tr>
+        <td><button type="submit">Submeter</button><td>
+		<td></td>
+	  </tr>	
+	</table>
+    <!--/div-->
+
+    <!--div class="form-group">
+      <label for="categoryId">Categoria ID</label>
+      <input type="text" class="form-control" id="categoryId" required [(ngModel)]="equipment.category.id" name="categoryId">
+    </div>
+
+    <div class="form-group">
+      <label for="modelId">Modelo ID</label>
+      <input type="text" class="form-control" id="modelId" required [(ngModel)]="equipment.model.id" name="modelId">
+    </div>
+  
+    <div class="form-group">
+      <label for="projectId">Projeto ID</label>
+      <input type="text" class="form-control" id="projectId" required [(ngModel)]="equipment.project.id" name="projectId">
+    </div>
+  
+    <div class="form-group">
+      <label for="employeeId">Colaborador ID</label>
+      <input type="text" class="form-control" id="employeeId" required [(ngModel)]="equipment.employeeId.id" name="employeeId">
+    </div>
+
+    <div class="form-group">
+      <label for="specification">Especificação</label>
+      <input type="text" class="form-control" id="specification" required [(ngModel)]="equipment.specification" name="specification">
+    </div-->
+
+
+  </form>
+</div>
+
+<div [hidden]="!submittedForm">
+  <h4><i class="material-icons">check_circle</i> Cadastro submetido com sucesso!</h4>
+</div>
+
+<div [hidden]="!showErrorMessage">
+  <h4>Ocorreu um erro!</h4>
+</div>
