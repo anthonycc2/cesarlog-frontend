@@ -1,9 +1,10 @@
 export class Equipment {
     id: number;
     code: string;
-    /*categoryId: number;
+    categoryId: number;
     modelId: number;
     projectId: number;
     employeeId: number;
-    specification: string;*/
+    observation: string;
+    locationDate: string;
 }

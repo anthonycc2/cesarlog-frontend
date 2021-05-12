@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InsertEquipmentComponent } from './insert-equipment/insert-equipment.component';
 import { UpdateEquipmentComponent } from './update-equipment/update-equipment.component';
 import { ListEquipmentsComponent } from './list-equipments/list-equipments.component';
+import { ListEmployeesComponent } from './list-employees/list-employees.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ListEquipmentsComponent } from './list-equipments/list-equipments.compo
     AppComponent,
     InsertEquipmentComponent,
     UpdateEquipmentComponent,
-    ListEquipmentsComponent
+    ListEquipmentsComponent,
+    ListEmployeesComponent
   ],
   imports: [
     BrowserModule,

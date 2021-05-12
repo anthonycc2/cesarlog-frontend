@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Lista de colaboradores</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Função</th>
+            <!--th>Ações</th-->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees | async">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.role}}</td>
+            <!--td><button (click)="delete(equipment.id)" class="btn btn-danger">Deletar</button>
+                <button (click)="update(equipment.id)" class="btn btn-info" style="margin-left: 10px">Alterar</button>
+            </td-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
