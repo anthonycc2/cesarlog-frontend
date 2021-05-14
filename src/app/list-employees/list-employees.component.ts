@@ -1,4 +1,3 @@
-//import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { Observable } from "rxjs";
 import { EmployeeService } from "../employee.service";
 import { Employee } from "../employee";
@@ -23,17 +22,4 @@ export class ListEmployeesComponent implements OnInit {
     this.employees = this.employeeService.getEmployeeList();
   }
 
-  /*delete(id: number) {
-    this.employeeService.deleteEmployee(id)
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-          this.reloadData();
-        },
-        (error: any) => console.log(error));
-  }*/
-
-  /*update(id: number) {
-    this.router.navigate(['/update-employee/' + id]);
-  }*/
 }

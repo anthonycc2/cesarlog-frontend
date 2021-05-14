@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+/*html, body {
     height: 100%;
-}
+}*/
 
 body {
     margin: 0;
@@ -16,19 +16,19 @@ body {
   
 .toolbar {
     /*position: absolute;*/
-    top: 0;
-    left: 0;
-    right: 0;
     height: 60px;
     display: flex;
     align-items: center;
+    line-height: 60px;
     background-color: orangered;
     color: white;
-    font-weight: 600;
+    font-size: large;
+    /*font-weight: bold;*/
 }
 
 .toolbar img {
     margin: 0 16px;
+    height: 40px;
 }
 
 .toolbar #twitter-logo {
@@ -41,6 +41,7 @@ body {
     /*height: 40px;
     margin: 0 16px;*/
     padding-left: 5px;
+    padding-right: 10px;
 }
 
 .toolbar #twitter-logo:hover {
@@ -50,22 +51,50 @@ body {
 .toolbar #logout-logo:hover {
     opacity: 80%;
 }
-  
+
 footer {
-    position: fixed;
-    bottom: 0;  
+    /*position: fixed;
+    bottom: 0;*/
     display: flex;
     /*justify-content: flex-end;*/
+    height: 100px;
     width: 100%;
-    text-align: center;
-    align-items: center;
-    border-top: 10px;
+    color: white;
+    background-color: orangered;
+    
+    line-height: 20px;
+
+    /*text-align: center;
+    align-items: center;*/
+
+    /*border-top: 10px;
     border-top-style: solid;
-    border-top-color: orangered;
+    border-top-color: gray;*/
 }
 
-menu {
-    color: black;
+.menu {
+    color: white;
+    font-size: large;
+    background-color: black;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.menu a {
+  color: white;
+  font-size: large;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  opacity: 80%;
+}
+
+.content {
+  padding: 10px;
+  height: 400px;
+  /*border-style: 1px solid;*/
 }
 
 /*********Formularios*********/
@@ -107,6 +136,24 @@ menu {
   width: 120px;
   font-size: large;
   color: white;
+}
+
+.list-panel {
+  margin: 20px;
+  border-style: 1px solid black;
+}
+
+.list-panel h2 {
+  color: orangered;
+}
+
+.list-panel table thead {
+  font-weight: bold;
+  text-align: left;
+}
+
+.list-panel table tbody tr:hover {
+  background-color: tan;
 }
 
 /************************FIM DOS MEUS ITENS***************************************************/

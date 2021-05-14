@@ -7,7 +7,7 @@
     /-->
     <img width="40" alt="CESAR logo" src="../assets/images/cesar-logo.jpg">
     
-    <span>CesarLog</span>
+    <span>Cesar<strong>Log</strong></span>
     <div class="spacer"></div>
     
     <!--a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
@@ -24,16 +24,15 @@
   </div>
 
   <div class="menu">
-    <a routerLink="#">Home</a> | 
+    <a routerLink="list-equipments">Home</a> | 
+    <a routerLink="insert-equipment">Cadastrar equipamento</a> | 
     <a routerLink="list-employees">Colaboradores</a> | 
     <a routerLink="list-projects">Projetos</a> | 
     <a routerLink="list-users">Usuários</a> | 
     <a routerLink="#">Contato</a> | 
     <a routerLink="#">Ajuda</a>
   </div>
-  <div><a routerLink="insert-equipment">Inserir equipamento</a></div>
-  <hr>
-  
+    
   <div class="content" role="main">
     <router-outlet></router-outlet>
   </div>

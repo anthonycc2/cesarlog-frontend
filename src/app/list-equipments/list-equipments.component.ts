@@ -1,4 +1,3 @@
-//import { EquipmentDetailsComponent } from '../equipment-details/equipment-details.component';
 import { Observable } from "rxjs";
 import { EquipmentService } from "../equipment.service";
 import { Equipment } from "../equipment";
@@ -7,8 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: "app-list-equipments",
-  templateUrl: "./list-equipments.component.html"//,
-  //styleUrls: ["./list-equipments.component.css"]
+  templateUrl: "./list-equipments.component.html"
 })
 export class ListEquipmentsComponent implements OnInit {
   equipments: Observable<Equipment[]> | undefined;
