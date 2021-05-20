@@ -18,7 +18,7 @@ export class UpdateEquipmentComponent implements OnInit {
     private equipmentService: EquipmentService) { }
 
   ngOnInit() {
-    this.equipment = new Equipment();
+    //this.equipment = new Equipment();
     this.submittedForm = false;
     this.showErrorMessage = false;
 
@@ -38,7 +38,7 @@ export class UpdateEquipmentComponent implements OnInit {
     this.equipmentService.updateEquipment(this.equipment)
       .subscribe(data => {
         console.log(data);
-        this.equipment = new Equipment();
+        //this.equipment = new Equipment();
       }, error => {
         console.log(error);
         this.showErrorMessage = true;

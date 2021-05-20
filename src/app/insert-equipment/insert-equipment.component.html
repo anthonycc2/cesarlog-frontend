@@ -6,38 +6,51 @@
         <td><label for="code">Tombamento:</label></td>
         <td><input type="text" class="form-control" id="code" required [(ngModel)]="equipment.code" name="code"></td>
       </tr>
-	  <tr>
+
+      <tr>
+        <td><label for="category">Categoria:</label></td>
+        <td><input type="text" class="form-control" id="category" required [(ngModel)]="equipment.category.id" name="category"></td>
+      </tr>
+
+      <tr>
+        <td><label for="model">Modelo:</label></td>
+        <td><input type="text" class="form-control" id="model" required [(ngModel)]="equipment.model.id" name="model"></td>
+      </tr>
+
+      <tr>
+        <td><label for="project">Projeto:</label></td>
+        <td><input type="text" class="form-control" id="project" required [(ngModel)]="equipment.project.id" name="project"></td>
+      </tr>
+
+      <mat-form-field>
+        <mat-label>Lista de projetos</mat-label>
+        <mat-select [(value)]="equipment.project.id">
+          <mat-option *ngFor="let project of projects" [value]="project.id">
+            {{ project.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--tr>
+        <td><label for="employee">Colaborador:</label></td>
+        <td><input type="text" class="form-control" id="employee" required [(ngModel)]="equipment.employee.id" name="employee"></td>
+      </tr-->
+
+      <tr>
+        <td><label for="locationDate">Data de localização:</label></td>
+        <td><input type="text" class="form-control" id="locationDate" required [(ngModel)]="equipment.locationDate" name="locationDate"></td>
+      </tr>
+
+      <tr>
+        <td><label for="observation">Observação:</label></td>
+        <td><input type="text" class="form-control" id="observation" [(ngModel)]="equipment.observation" name="observation"></td>
+      </tr>
+
+      <tr>
         <td><button type="submit">Submeter</button><td>
-		<td></td>
-	  </tr>	
-	</table>
-    <!--/div-->
-
-    <!--div class="form-group">
-      <label for="categoryId">Categoria ID</label>
-      <input type="text" class="form-control" id="categoryId" required [(ngModel)]="equipment.category.id" name="categoryId">
-    </div>
-
-    <div class="form-group">
-      <label for="modelId">Modelo ID</label>
-      <input type="text" class="form-control" id="modelId" required [(ngModel)]="equipment.model.id" name="modelId">
-    </div>
-  
-    <div class="form-group">
-      <label for="projectId">Projeto ID</label>
-      <input type="text" class="form-control" id="projectId" required [(ngModel)]="equipment.project.id" name="projectId">
-    </div>
-  
-    <div class="form-group">
-      <label for="employeeId">Colaborador ID</label>
-      <input type="text" class="form-control" id="employeeId" required [(ngModel)]="equipment.employeeId.id" name="employeeId">
-    </div>
-
-    <div class="form-group">
-      <label for="specification">Especificação</label>
-      <input type="text" class="form-control" id="specification" required [(ngModel)]="equipment.specification" name="specification">
-    </div-->
-
+		    <td></td>
+	    </tr>	
+	  </table>
 
   </form>
 </div>

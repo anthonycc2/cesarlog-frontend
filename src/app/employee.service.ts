@@ -21,7 +21,7 @@ export class EmployeeService {
     return this.http.get(`${this.baseUrl}/all`);
   }
   
-  /*//POST method
+  //POST method
   addEmployee(employee: Employee): Observable<Object> {
     return this.http.post(`${this.baseUrl}/add`, employee);
   }
@@ -34,5 +34,5 @@ export class EmployeeService {
   //DELETE method
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
-  }*/
+  }
 }

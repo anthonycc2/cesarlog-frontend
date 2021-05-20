@@ -9,6 +9,7 @@ import { UpdateEquipmentComponent } from './update-equipment/update-equipment.co
 import { ListEquipmentsComponent } from './list-equipments/list-equipments.component';
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
+import { InsertEmployeeComponent } from './insert-employee/insert-employee.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ListProjectsComponent } from './list-projects/list-projects.component';
     UpdateEquipmentComponent,
     ListEquipmentsComponent,
     ListEmployeesComponent,
-    ListProjectsComponent
+    ListProjectsComponent,
+    InsertEmployeeComponent
   ],
   imports: [
     BrowserModule,

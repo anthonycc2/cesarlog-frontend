@@ -4,14 +4,23 @@
   <table width="100%">
     <thead>
       <tr>
-        <th width="10%">ID</th>
-        <th width="90%">Tombamento</th>
+        <!--th width="10%">ID</th-->
+        <th width="10%">Tombamento</th>
+        <th width="20%">Catgoria</th>
+        <th width="20%">Modelo</th>
+        <th width="10%">Projeto</th>
+        <th width="20%">Data da localização</th>
+        <th width="20%">Ações</th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let equipment of equipments | async">
-          <td>{{equipment.id}}</td>
+          <!--td>{{equipment.id}}</td-->
           <td>{{equipment.code}}</td>
+          <td>{{equipment.category.name}}</td>
+          <td>{{equipment.model.name}}</td>
+          <td>{{equipment.project.name}}</td>
+          <td>{{equipment.locationDate}}</td>
           <td><button (click)="delete(equipment.id)" class="btn btn-danger">Deletar</button>
             <button (click)="update(equipment.id)" class="btn btn-info" style="margin-left: 10px">Alterar</button>
           </td>
