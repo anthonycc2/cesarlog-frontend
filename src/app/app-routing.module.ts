@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/list-equipments', pathMatch: 'full' },
   //{ path: 'cliente/:id', component: ClienteDetalheComponent },
   { path: 'insert-equipment', component: InsertEquipmentComponent },
-  { path: 'update-equipment', component: UpdateEquipmentComponent },
+  { path: 'update-equipment/:id', component: UpdateEquipmentComponent },
   { path: 'list-equipments', component: ListEquipmentsComponent },
   { path: 'insert-employee', component: InsertEmployeeComponent},
   { path: 'list-employees', component: ListEmployeesComponent},

@@ -33,6 +33,6 @@ export class ListEquipmentsComponent implements OnInit {
   }
 
   update(id: number) {
-    this.router.navigate(['/update-equipment/' + id]);
+    this.router.navigate(['update-equipment', id]);
   }
 }
