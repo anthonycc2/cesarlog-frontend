@@ -6,8 +6,7 @@ import { ListEquipmentsComponent } from './list-equipments/list-equipments.compo
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { InsertEmployeeComponent } from './insert-employee/insert-employee.component';
-import { InsertEquipmentAssignmentComponent } from './insert-equipment-assignment/insert-equipment-assignment.component';
-import { ListEquipmentAssignmentsComponent } from './list-equipment-assignments/list-equipment-assignments.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list-equipments', pathMatch: 'full' },
@@ -17,9 +16,7 @@ const routes: Routes = [
   { path: 'insert-employee', component: InsertEmployeeComponent},
   { path: 'list-employees', component: ListEmployeesComponent},
   { path: 'list-projects', component: ListProjectsComponent},
-  { path: 'insert-equipment-assignment', component: InsertEquipmentAssignmentComponent },
-  //{ path: 'update-equipment-assignment/:id', component: UpdateEquipmentAssignmentComponent },
-  { path: 'list-equipment-assignments', component: ListEquipmentAssignmentsComponent }
+  { path: 'send-message', component: SendMessageComponent }
 ];
 
 @NgModule({
