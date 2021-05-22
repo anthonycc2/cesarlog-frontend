@@ -1,0 +1,51 @@
+<div class="form-general">
+    <h1><strong>Vincular Equipamento</strong></h1>
+    <form (ngSubmit)="onSubmit()">
+        <table>
+            <tr>
+                <td><label for="equipment">Equipamento:</label></td>
+                <td>
+                    <select [(ngModel)]="equipmentAssignment.equipment.id" id="equipment" name="equipment">
+                        <option *ngFor="let equipment of equipments | async" [value]="equipment.id">{{ equipment.code }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="employee">Colaborador:</label></td>
+                <td>
+                    <select [(ngModel)]="equipmentAssignment.employee.id" id="employee" name="employee">
+                        <option *ngFor="let employee of employees | async" [value]="employee.id">{{ employee.name }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="assignmentDate">Data de vinculação:</label></td>
+                <td><input type="text" class="form-control" id="assignmentDate" required [(ngModel)]="equipmentAssignment.assignmentDate" name="assignmentDate"></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="submit">Vincular</button>
+                <td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--div [hidden]="hideSucessMessage">
+    <h4><i class="material-icons">check_circle</i> Equipamento vinculado com sucesso!</h4>
+  </div-->
+<div *ngIf="hideSucessMessage == false" class="sucessMessage">
+    <h4><i class="material-icons">check_circle</i> Equipamento vinculado com sucesso!</h4>
+</div>
+
+<div [hidden]="hideErrorMessage" class="errorMessage">
+    <h4>Ocorreu um erro!</h4>
+</div>
+
+<div>
+    <h4>{{ data }}</h4>
+</div>

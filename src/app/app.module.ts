@@ -10,7 +10,8 @@ import { ListEquipmentsComponent } from './list-equipments/list-equipments.compo
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { InsertEmployeeComponent } from './insert-employee/insert-employee.component';
-
+import { InsertEquipmentAssignmentComponent } from './insert-equipment-assignment/insert-equipment-assignment.component';
+import { ListEquipmentAssignmentsComponent } from './list-equipment-assignments/list-equipment-assignments.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { InsertEmployeeComponent } from './insert-employee/insert-employee.compo
     ListEquipmentsComponent,
     ListEmployeesComponent,
     ListProjectsComponent,
-    InsertEmployeeComponent
+    InsertEmployeeComponent,
+    InsertEquipmentAssignmentComponent,
+    ListEquipmentAssignmentsComponent
   ],
   imports: [
     BrowserModule,

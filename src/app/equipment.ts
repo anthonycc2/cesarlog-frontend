@@ -16,7 +16,6 @@ export class Equipment {
         this.model = new Model();
         this.project = new Project();
     }
-    
 }
 
  

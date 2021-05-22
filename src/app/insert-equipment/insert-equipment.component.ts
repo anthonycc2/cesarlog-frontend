@@ -10,15 +10,11 @@ import { Project } from '../project';
 
 @Component({
   selector: 'app-insert-equipment',
-  templateUrl: './insert-equipment.component.html'//,
-  //styleUrls: ['./insert-equipment.component.css']
+  templateUrl: './insert-equipment.component.html'
 })
 export class InsertEquipmentComponent implements OnInit {
 
   equipment: Equipment;
-  /*category: Category;
-  model: Model;*/
-  /*project: Project;*/
   projects: Observable<Project[]> | undefined
   submittedForm: boolean;
   showErrorMessage: boolean;
@@ -30,21 +26,12 @@ export class InsertEquipmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*this.category = new Category();
-    this.model = new Model();
-    this.project = new Project();*/
     this.equipment = new Equipment();
-    //this.equipment.employee.id = 0;
     this.submittedForm = false;
     this.showErrorMessage = false;
 
     this.projects = this.projectService.getProjectList();
   }
-
-  /*newEquipment(): void {
-    this.submitted = false;
-    this.equipment = new Equipment();
-  }*/
 
   save() {
     this.equipmentService

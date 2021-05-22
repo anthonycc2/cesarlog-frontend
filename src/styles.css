@@ -160,6 +160,19 @@ footer {
   background-color: tan;
 }
 
+.sucessMessage {
+  color: white;
+  background-color: green;
+  padding-left: 5px;
+  height: 20px;
+}
+
+.errorMessage {
+  color: white;
+  background-color: red;
+  padding-left: 5px;
+  height: 20px;
+}
 /************************FIM DOS MEUS ITENS***************************************************/
 
 /**************************IMPORTADO DO APP COMPONENT HTML***********************************/

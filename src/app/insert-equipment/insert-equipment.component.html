@@ -19,22 +19,12 @@
 
       <tr>
         <td><label for="project">Projeto:</label></td>
-        <!--td><input type="text" class="form-control" id="project" required [(ngModel)]="equipment.project.id" name="project"></td-->
         <td>
-          <select size="1" [(ngModel)]="equipment.project.id" id="project" name="projects">
+          <select [(ngModel)]="equipment.project.id" id="project" name="project">
             <option *ngFor="let project of projects | async" [value]="project.id">{{ project.name }}</option>
           </select>
         </td>
       </tr>
-
-      <!--mat-form-field>
-        <mat-label>Lista de projetos</mat-label>
-        <mat-select [(value)]="equipment.project.id">
-          <mat-option *ngFor="let project of projects" [value]="project.id">
-            {{ project.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field-->
 
       <tr>
         <td><label for="locationDate">Data de localização:</label></td>

@@ -25,20 +25,44 @@ export class ProjectService {
   addProject(project: Project): Observable<Object> {
     return this.http.post(`${this.baseUrl}/add`, project);
   }
-  /*addProject(project: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/add`, project);
-  }*/
 
   //PUT method
   updateProject(project: Project): Observable<Object> {
     return this.http.put(`${this.baseUrl}/update/`, project);
   }
-  /*update(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/update/${id}`, value);
-  }*/
 
   //DELETE method
   deleteProject(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
   }
+
+  /*
+  //////////////////VERSÃO DE HEBER//////////////////
+  private baseUrl = 'https://cesarlog-backend.herokuapp.com/project';
+
+  constructor(private http: HttpClient) { }
+
+  //GET methods  
+  getProject(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  getProjectList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
+  }
+  
+  //POST method
+  addProject(project: Project): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, project);
+  }
+
+  //PUT method
+  updateProject(project: Project): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/`, project);
+  }
+
+  //DELETE method
+  deleteProject(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  }*/
 }
