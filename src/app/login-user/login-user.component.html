@@ -1,0 +1,30 @@
+<div class="form-general">
+    <h1><strong>Fazer login</strong></h1>
+    <!--form (ngSubmit)="onSubmit()"-->
+      <table>
+        <tr>
+          <td><label for="login">Login:</label></td>
+          <td><input type="text" class="form-control" id="login" required [(ngModel)]="user.login" name="login"></td>
+        </tr>
+  
+        <tr>
+          <td><label for="password">Senha:</label></td>
+          <td><input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password"></td>
+        </tr>
+  
+        <tr>
+          <td><button type="submit" (click)="tryLogin()">Submeter</button><td>
+              <td></td>
+          </tr>	
+        </table>
+  
+    <!--/form-->
+  </div>
+  
+  <!--div [hidden]="!submittedForm">
+    <h4><i class="material-icons">check_circle</i> Cadastro submetido com sucesso!</h4>
+  </div-->
+  
+  <div [hidden]="!showErrorMessage">
+    <h4>Login ou senha inválido(s).</h4>
+  </div>

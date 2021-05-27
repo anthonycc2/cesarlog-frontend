@@ -7,9 +7,12 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { InsertEmployeeComponent } from './insert-employee/insert-employee.component';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { LoginUserComponent } from './login-user/login-user.component';
+
 
 const routes: Routes = [
-  { path: '', redirectTo: '/list-equipments', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'login-user', pathMatch: 'full' },
+  { path: 'login-user', component: LoginUserComponent },
   { path: 'insert-equipment', component: InsertEquipmentComponent },
   { path: 'update-equipment/:id', component: UpdateEquipmentComponent },
   { path: 'list-equipments', component: ListEquipmentsComponent },
