@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
 import { EquipmentService } from '../equipment.service';
+import { CategoryService } from '../category.service';
+import { ModelService } from '../model.service';
 import { ProjectService } from '../project.service';
 import { Equipment } from '../equipment';
 import { Category } from '../category';
@@ -15,11 +17,15 @@ import { Project } from '../project';
 export class InsertEquipmentComponent implements OnInit {
 
   equipment: Equipment;
+  categories: Observable<Category[]> | undefined
+  models: Observable<Model[]> | undefined
   projects: Observable<Project[]> | undefined
-  submittedForm: boolean;
   showErrorMessage: boolean;
 
-  constructor(private equipmentService: EquipmentService,
+  constructor(
+    private equipmentService: EquipmentService,
+    private categoryService: CategoryService,
+    private modelService: ModelService,
     private projectService: ProjectService,
     private router: Router) {
 
@@ -27,28 +33,32 @@ export class InsertEquipmentComponent implements OnInit {
 
   ngOnInit() {
     this.equipment = new Equipment();
-    this.submittedForm = false;
     this.showErrorMessage = false;
 
     this.projects = this.projectService.getProjectList();
+    this.categories = this.categoryService.getCategoryList();
+    this.models = this.modelService.getModelList();
   }
 
   save() {
     this.equipmentService
       .addEquipment(this.equipment).subscribe(data => {
         console.log(data);
+        this.showErrorMessage = false;
         //this.equipment = new Equipment();
       },
-        error => { console.log(error); this.showErrorMessage = true; });
+        error => {
+          console.log(error);
+          this.showErrorMessage = true;
+        });
   }
 
   onSubmit() {
     this.save();
-    this.submittedForm = true;
     this.gotoList();
   }
 
   gotoList() {
-    this.router.navigate(['/list-equipments']);
+    this.router.navigate(['list-equipments']);
   }
 }

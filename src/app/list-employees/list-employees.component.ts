@@ -15,6 +15,12 @@ export class ListEmployeesComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
+    if (window.localStorage.length === 0) {
+    //if (window.localStorage.length === 0 || window.localStorage.getItem('user_login') === '') {
+      alert("Usuário não logado!!!");
+      this.router.navigate(['/']);
+    }
+  
     this.reloadData();
   }
 

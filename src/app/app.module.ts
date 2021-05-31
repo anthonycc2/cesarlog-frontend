@@ -11,7 +11,9 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { InsertEmployeeComponent } from './insert-employee/insert-employee.component';
 import { SendMessageComponent } from './send-message/send-message.component';
-import { LoginUserComponent } from './login-user/login-user.component';
+import { HomeComponent } from './home/home.component';
+import { InsertAllocationComponent } from './insert-allocation/insert-allocation.component';
+import { ListAllocationsComponent } from './list-allocations/list-allocations.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoginUserComponent } from './login-user/login-user.component';
     ListProjectsComponent,
     InsertEmployeeComponent,
     SendMessageComponent,
-    LoginUserComponent
+    HomeComponent,
+    InsertAllocationComponent,
+    ListAllocationsComponent
   ],
   imports: [
     BrowserModule,

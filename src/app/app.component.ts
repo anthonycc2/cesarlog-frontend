@@ -1,6 +1,7 @@
-import { Component, EventEmitter } from '@angular/core';
-import { User } from './user';
-import { UserService } from './user.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Account } from './account';
+import { AccountService } from './account.service';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +11,28 @@ export class AppComponent {
   title = 'CesarLog';
 
   showMenu: boolean;
-  showMenuString: string;
-
-  
+  showMenuString: string;  
 
 
   isAthenticatedUser: boolean;
-  user: User;
-  authenticatedUser: User;
+  user: Account;
+  account: Account;
   showErrorMessage: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private accountService: AccountService,
+    private router: Router) { }
 
   ngOnInit() {
     this.isAthenticatedUser = false;
-    this.user = new User();
-    this.user.level = "COLABORADOR";
-    this.authenticatedUser = new User();
+    this.user = new Account();
+    this.user.level = "C"; //////////TIRAR
+    this.account = new Account();
     this.showErrorMessage = false;
+
+    //window.location.reload();
+
+    /*if (!this.isAthenticatedUser)
+      window.location.href = 'login.html';*/
   }
 
   /*///////OPCAO COM EVENT-EMITTER
@@ -47,26 +52,27 @@ export class AppComponent {
       this.user = { login: 'marcos', password: 'pontes', level: 'N'};*/
 
   tryLogin() {
-    this.isAthenticatedUser = this.userService.login(this.user);
+    this.isAthenticatedUser = this.accountService.login(this.user);
 
     if (this.isAthenticatedUser) {
-      this.authenticatedUser = this.user;//=this.userService.getUser(user.login);
-      window.localStorage.setItem('user_login', this.authenticatedUser.login);
-      window.localStorage.setItem('user_level', this.authenticatedUser.level);
+      this.account = this.user;//=this.userService.getAccountByLogin(user.login);
+      window.localStorage.setItem('user_login', this.account.login);
+      window.localStorage.setItem('user_level', this.account.level);
       this.showErrorMessage = false;
+      alert("O usuário logado é: " + window.localStorage.getItem('user_login'));
+      //window.location.reload();
     } else {
       this.showErrorMessage = true;
     }
   }
 
-  /*tryLogin222() {
-    this.userService
-      .login(this.user).subscribe(data => {
-        console.log(data);
-        //this.equipment = new Equipment();
-      },
-        error => { console.log(error); this.showErrorMessage = true; });
-  }*/
+  logout() {
+    this.isAthenticatedUser = false;
+    this.account = new Account();
+    window.localStorage.clear();
+    this.router.navigate(['/']);
+    //window.location.reload();
+  }
 
   onSubmit() {
     this.tryLogin();

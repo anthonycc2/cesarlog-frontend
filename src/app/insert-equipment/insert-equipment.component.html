@@ -1,4 +1,4 @@
-<div [hidden]="submittedForm" class="form-general">
+<div class="form-general">
   <h1><strong>Cadastrar Equipamento</strong></h1>
   <form (ngSubmit)="onSubmit()">
     <table>
@@ -9,12 +9,20 @@
 
       <tr>
         <td><label for="category">Categoria:</label></td>
-        <td><input type="text" class="form-control" id="category" required [(ngModel)]="equipment.category.id" name="category"></td>
+        <td>
+          <select [(ngModel)]="equipment.category.id" id="category" name="category">
+            <option *ngFor="let category of categories | async" [value]="category.id">{{ category.name }}</option>
+          </select>
+        </td>
       </tr>
 
       <tr>
         <td><label for="model">Modelo:</label></td>
-        <td><input type="text" class="form-control" id="model" required [(ngModel)]="equipment.model.id" name="model"></td>
+        <td>
+          <select [(ngModel)]="equipment.model.id" id="model" name="model">
+            <option *ngFor="let model of models | async" [value]="model.id">{{ model.name }}</option>
+          </select>
+        </td>
       </tr>
 
       <tr>

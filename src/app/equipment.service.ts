@@ -25,17 +25,11 @@ export class EquipmentService {
   addEquipment(equipment: Equipment): Observable<Object> {
     return this.http.post(`${this.baseUrl}/add`, equipment);
   }
-  /*addEquipment(equipment: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/add`, equipment);
-  }*/
 
   //PUT method
   updateEquipment(equipment: Equipment): Observable<Object> {
     return this.http.put(`${this.baseUrl}/update/`, equipment);
   }
-  /*update(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/update/${id}`, value);
-  }*/
 
   //DELETE method
   deleteEquipment(id: number): Observable<any> {

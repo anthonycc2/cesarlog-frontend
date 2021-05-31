@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { Account } from '../account';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-login-user',
@@ -9,19 +9,19 @@ import { UserService } from '../user.service';
 })
 export class LoginUserComponent implements OnInit {
 
-  user: User;
+  user: Account;
 
   showErrorMessage: boolean;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    this.user = new User();
+    this.user = new Account();
     this.showErrorMessage = false;
   }
 
   tryLogin() {
-    this.userService.login(this.user);
+    this.accountService.login(this.user);
     this.router.navigate(['/list-equipments']);
   }
 

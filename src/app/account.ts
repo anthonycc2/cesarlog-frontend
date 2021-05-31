@@ -1,4 +1,5 @@
-export class User {
+export class Account {
+    id: number;
     login: string;
     password: string;
     level: string;
