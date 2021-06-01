@@ -40,4 +40,36 @@ export class ListAllocationsComponent implements OnInit {
   update(id: number) {
     this.router.navigate(['update-allocation', id]);
   }
+
+  confirm(allocation: Allocation) {
+    var dateTime = new Date();
+    allocation.allocationDate = this.functions.formatDate(dateTime);
+    allocation.status = "CONFIRMADO";
+
+    this.allocationService.updateAllocation(allocation)
+      .subscribe(
+        data => { //(data: any) => {
+          console.log(data);
+          this.reloadData();
+        }, error => { //(error: any) => console.log(error));
+          console.log(error);
+          alert("Ocorreu um erro! Visualize o console para mais detalhes.")
+        });
+  }
+
+  return(allocation: Allocation) {
+    var dateTime = new Date();
+    allocation.allocationDate = this.functions.formatDate(dateTime);
+    allocation.status = "DEVOLVIDO";
+    
+    this.allocationService.updateAllocation(allocation)
+      .subscribe(
+        data => { //(data: any) => {
+          console.log(data);
+          this.reloadData();
+        }, error => { //(error: any) => console.log(error));
+          console.log(error);
+          alert("Ocorreu um erro! Visualize o console para mais detalhes.")
+        });
+  }
 }

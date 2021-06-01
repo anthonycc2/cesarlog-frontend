@@ -8,13 +8,9 @@ import { Allocation } from './allocation';
 })
 export class AllocationService {
 
-  allocation: Allocation;
-
   private baseUrl = 'http://localhost:8080/allocation';
 
-  constructor(private http: HttpClient) {
-    this.allocation = new Allocation();
-  }
+  constructor(private http: HttpClient) { }
 
   //GET methods  
   getAllocation(id: number): Observable<any> {

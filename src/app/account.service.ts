@@ -30,7 +30,7 @@ export class AccountService {
     }
   }*/
 
-  login(userForLogin: Account): boolean {
+  login0(userForLogin: Account): boolean {
     if (userForLogin.login === 'silviom' && userForLogin.password === 'meira') {
       return true;
     } else {
@@ -39,16 +39,16 @@ export class AccountService {
   }
 
   /////////// NO FINAL DEVE FICAR ASSIM:
-  login1(user: Account): boolean {
+  login(user: Account): boolean {
     this.getAccountByLogin(user.login)
       .subscribe(data => {
         console.log(data)
         this.account = data;
       }, error => {
         console.log(error);
-        return false;
-        //this.showErrorMessage = true; 
+        alert("Ocorreu um erro! Visualize o console para mais detalhes.");
       });
+      
     if (user.login === this.account.login && user.password === this.account.password) {
       return true;
     } else {

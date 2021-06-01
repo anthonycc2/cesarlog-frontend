@@ -5,11 +5,12 @@
       <thead>
         <tr>
           <th width="10%">Tombamento</th>
-          <th width="20%">Colaborador</th>
-          <th width="20%">Data do vínculo</th>
-          <th width="10%">Localização</th>
-          <th width="20%">Data da localização</th>
-          <th width="20%">Ações</th>
+          <th width="10%">Colaborador</th>
+          <th width="15%">Data do vínculo</th>
+          <th width="10%">Status</th>
+          <th width="15%">Localização</th>
+          <th width="15%">Data da localização</th>
+          <th width="25%">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -17,11 +18,14 @@
             <td>{{allocation.equipment.code}}</td>
             <td>{{allocation.employee.name}}</td>
             <td>{{allocation.allocationDate}}</td>
+            <td>{{allocation.status}}</td>
             <td>{{allocation.location}}</td>
             <td>{{allocation.locationDate}}</td>
             <td>
-                <button (click)="update(allocation.id)" class="general-button" style="margin-left: 10px">Alterar</button>
-                <button (click)="delete(allocation.id)" class="danger-button">Deletar</button>
+                <button (click)="update(allocation.id)" class="general-button">Alterar</button>
+                <button (click)="confirm(allocation)" class="danger-button" style="margin-left: 10px">Confirmar</button>
+                <button (click)="return(allocation)" class="danger-button" style="margin-left: 10px">Devolver</button>
+                <button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Deletar</button>
             </td>
           </tr>
         </tbody>

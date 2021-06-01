@@ -7,6 +7,7 @@ import { EmployeeService } from '../employee.service';
 import { Allocation } from '../allocation';
 import { Equipment } from '../equipment';
 import { Employee } from '../employee';
+import { Functions } from '../functions';
 
 @Component({
   selector: 'app-insert-allocation',
@@ -22,15 +23,13 @@ export class InsertAllocationComponent implements OnInit {
   constructor(private allocationService: AllocationService,
     private equipmentService: EquipmentService,
     private employeeService: EmployeeService,
-    private router: Router) {
+    private router: Router,
+    private functions: Functions) {
 
   }
 
   ngOnInit() {
-    if (window.localStorage.length === 0) {
-        alert("Usuário não logado!!!");
-        this.router.navigate(['home']);
-    }
+    this.functions.verifyAuthenticatedUser();
 
     this.allocation = new Allocation();
     //this.allocation.allocationDate = new Date().toString();
@@ -41,9 +40,12 @@ export class InsertAllocationComponent implements OnInit {
   }
 
   save() {
-    this.allocation.allocationDate = new Date().toString();
-    this.allocationService
-      .addAllocation(this.allocation).subscribe(data => {
+    var dateTime = new Date();
+    this.allocation.allocationDate = this.functions.formatDate(dateTime);
+    this.allocation.status = "PENDENTE";
+
+    this.allocationService.addAllocation(this.allocation)
+      .subscribe(data => {
         console.log(data);
         this.showErrorMessage = false;
         //this.allocation = new Allocation();

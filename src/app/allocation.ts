@@ -6,6 +6,7 @@ export class Allocation {
     equipment: Equipment;
     employee: Employee;
     allocationDate: string;
+    status: string;
     location: string;
     locationDate: string;
 

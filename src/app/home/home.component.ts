@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Functions } from '../functions';
 
 @Component({
   selector: 'app-home',
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  sDateTime: string;
+
+  constructor(private functions: Functions) { }
 
   ngOnInit(): void {
+    var dateTime = new Date();
+    this.sDateTime = this.functions.formatDate(dateTime);
   }
 
 }
