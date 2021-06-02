@@ -34,7 +34,7 @@ export class UpdateEquipmentComponent implements OnInit {
       });
   }
 
-  updateEquipment() {
+  update() {
     this.equipmentService.updateEquipment(this.equipment)
       .subscribe(data => {
         console.log(data);
@@ -46,7 +46,7 @@ export class UpdateEquipmentComponent implements OnInit {
   }
 
   onSubmit() {
-    this.updateEquipment();
+    this.update();
     this.submittedForm = true;
     this.gotoList();
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Functions } from '../functions';
+import { FunctionsPackage } from '../functions-package';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +9,11 @@ export class HomeComponent implements OnInit {
 
   sDateTime: string;
 
-  constructor(private functions: Functions) { }
+  constructor(private functionsPackage: FunctionsPackage) { }
 
   ngOnInit(): void {
     var dateTime = new Date();
-    this.sDateTime = this.functions.formatDate(dateTime);
+    this.sDateTime = this.functionsPackage.formatDate(dateTime);
   }
 
 }

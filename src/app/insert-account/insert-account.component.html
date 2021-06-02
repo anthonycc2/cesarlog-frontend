@@ -1,0 +1,55 @@
+<div class="form-general">
+    <h1><strong>Cadastrar usuário</strong></h1>
+    <form (ngSubmit)="onSubmit()">
+        <table>
+            <tr>
+                <td><label for="login">Login:</label></td>
+                <td>
+                    <input type="text" class="form-control" id="login" required [(ngModel)]="account.login" name="login">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="password">Senha:</label></td>
+                <td>
+                    <input type="password" class="form-control" id="password" required [(ngModel)]="account.password" name="password">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="password2">Confirmar senha:</label></td>
+                <td>
+                    <input type="password" class="form-control" id="password2" required [(ngModel)]="password2" name="password2">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="employee">Nível:</label></td>
+                <td>
+                    <select [(ngModel)]="account.level" id="level" name="level">
+                        <option value="C">Colaborador</option>
+                        <option value="G">Gestor</option>
+                        <option value="S">Supervisor</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!--tr>
+                <td><label for="employee">Colaborador:</label></td>
+                <td>
+                    <select [(ngModel)]="account.employee.id" id="employee" name="employee">
+                        <option *ngFor="let employee of employees | async" [value]="employee.id">{{ employee.name }}
+                        </option>
+                    </select>
+                </td>
+            </tr-->
+
+            <tr>
+                <td>
+                    <button type="submit">Salvar</button>
+                <td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="list-panel">
+    <h2>Lista de usuários</h2>
+    <hr>
+    <table width="45%">
+      <thead>
+        <tr>
+          <th width="10%">Login</th>
+          <th width="10%">Nível</th>
+          <th width="25%">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of accounts | async">
+            <td>{{account.login}}</td>
+            <td>{{account.level}}</td>
+            <td>
+                <button (click)="update(account.id)" class="general-button">Alterar</button>
+                <button (click)="delete(account.id)" class="danger-button" style="margin-left: 10px">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>

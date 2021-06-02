@@ -14,6 +14,9 @@ import { SendMessageComponent } from './send-message/send-message.component';
 import { HomeComponent } from './home/home.component';
 import { InsertAllocationComponent } from './insert-allocation/insert-allocation.component';
 import { ListAllocationsComponent } from './list-allocations/list-allocations.component';
+import { UpdateAllocationComponent } from './update-allocation/update-allocation.component';
+import { InsertAccountComponent } from './insert-account/insert-account.component';
+import { ListAccountsComponent } from './list-accounts/list-accounts.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { ListAllocationsComponent } from './list-allocations/list-allocations.co
     SendMessageComponent,
     HomeComponent,
     InsertAllocationComponent,
-    ListAllocationsComponent
+    ListAllocationsComponent,
+    UpdateAllocationComponent,
+    InsertAccountComponent,
+    ListAccountsComponent
   ],
   imports: [
     BrowserModule,

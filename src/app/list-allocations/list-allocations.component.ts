@@ -3,7 +3,7 @@ import { AllocationService } from "../allocation.service";
 import { Allocation } from "../allocation";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { Functions } from '../functions';
+import { FunctionsPackage } from '../functions-package';
 
 @Component({
   selector: "app-list-allocations",
@@ -16,10 +16,10 @@ export class ListAllocationsComponent implements OnInit {
   constructor(
     private allocationService: AllocationService,
     private router: Router,
-    private functions: Functions) {}
+    private functionsPackage: FunctionsPackage) {}
 
   ngOnInit() {
-    this.functions.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser();
 
     this.reloadData();
   }
@@ -43,7 +43,7 @@ export class ListAllocationsComponent implements OnInit {
 
   confirm(allocation: Allocation) {
     var dateTime = new Date();
-    allocation.allocationDate = this.functions.formatDate(dateTime);
+    allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
     allocation.status = "CONFIRMADO";
 
     this.allocationService.updateAllocation(allocation)
@@ -53,13 +53,13 @@ export class ListAllocationsComponent implements OnInit {
           this.reloadData();
         }, error => { //(error: any) => console.log(error));
           console.log(error);
-          alert("Ocorreu um erro! Visualize o console para mais detalhes.")
+          this.functionsPackage.showErroMessage();
         });
   }
 
   return(allocation: Allocation) {
     var dateTime = new Date();
-    allocation.allocationDate = this.functions.formatDate(dateTime);
+    allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
     allocation.status = "DEVOLVIDO";
     
     this.allocationService.updateAllocation(allocation)
@@ -69,7 +69,7 @@ export class ListAllocationsComponent implements OnInit {
           this.reloadData();
         }, error => { //(error: any) => console.log(error));
           console.log(error);
-          alert("Ocorreu um erro! Visualize o console para mais detalhes.")
+          this.functionsPackage.showErroMessage();
         });
   }
 }

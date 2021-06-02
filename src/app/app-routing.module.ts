@@ -9,6 +9,11 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { InsertAllocationComponent } from './insert-allocation/insert-allocation.component';
 import { ListAllocationsComponent } from './list-allocations/list-allocations.component';
+import { UpdateAllocationComponent } from './update-allocation/update-allocation.component';
+import { InsertAccountComponent } from './insert-account/insert-account.component';
+import { ListAccountsComponent } from './list-accounts/list-accounts.component';
+//import { UpdateAccountComponent } from './update-account/update-account.component';
+
 //import { SendMessageComponent } from './send-message/send-message.component';
 
 
@@ -22,7 +27,12 @@ const routes: Routes = [
   { path: 'list-employees', component: ListEmployeesComponent},
   { path: 'list-projects', component: ListProjectsComponent},
   { path: 'insert-allocation', component: InsertAllocationComponent},
-  { path: 'list-allocations', component: ListAllocationsComponent}
+  { path: 'list-allocations', component: ListAllocationsComponent},
+  { path: 'update-allocation/:id', component: UpdateAllocationComponent },
+  { path: 'insert-account', component: InsertAccountComponent},
+  { path: 'list-accounts', component: ListAccountsComponent}
+  //{ path: 'update-account', component: UpdateAccountComponent}
+
   //{ path: 'send-message', component: SendMessageComponent }
 ];
 

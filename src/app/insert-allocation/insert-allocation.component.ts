@@ -7,7 +7,7 @@ import { EmployeeService } from '../employee.service';
 import { Allocation } from '../allocation';
 import { Equipment } from '../equipment';
 import { Employee } from '../employee';
-import { Functions } from '../functions';
+import { FunctionsPackage } from '../functions-package';
 
 @Component({
   selector: 'app-insert-allocation',
@@ -24,16 +24,14 @@ export class InsertAllocationComponent implements OnInit {
     private equipmentService: EquipmentService,
     private employeeService: EmployeeService,
     private router: Router,
-    private functions: Functions) {
+    private functionsPackage: FunctionsPackage) {
 
   }
 
   ngOnInit() {
-    this.functions.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser();
 
     this.allocation = new Allocation();
-    //this.allocation.allocationDate = new Date().toString();
-    this.showErrorMessage = false;
 
     this.equipments = this.equipmentService.getEquipmentList();
     this.employees = this.employeeService.getEmployeeList();
@@ -41,18 +39,17 @@ export class InsertAllocationComponent implements OnInit {
 
   save() {
     var dateTime = new Date();
-    this.allocation.allocationDate = this.functions.formatDate(dateTime);
+    this.allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
     this.allocation.status = "PENDENTE";
 
     this.allocationService.addAllocation(this.allocation)
       .subscribe(data => {
         console.log(data);
-        this.showErrorMessage = false;
         //this.allocation = new Allocation();
       },
         error => {
           console.log(error);
-          this.showErrorMessage = true;
+          this.functionsPackage.showErroMessage();
         });
   }
 
