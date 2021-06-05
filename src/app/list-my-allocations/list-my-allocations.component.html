@@ -1,5 +1,5 @@
 <div class="list-panel">
-    <h2>Lista de equipamentos vinculados</h2>
+    <h2>Meus equipamentos</h2>
     <hr>
     <table width="100%">
       <thead>
@@ -25,7 +25,7 @@
                 <button (click)="update(allocation.id)" class="general-button">Alterar</button>
                 <button *ngIf="allocation.status === 'PENDENTE'" (click)="confirm(allocation)" class="danger-button" style="margin-left: 10px">Confirmar</button>
                 <button *ngIf="allocation.status === 'CONFIRMADO'" (click)="return(allocation)" class="danger-button" style="margin-left: 10px">Devolver</button>
-                <button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Deletar</button>
+                <!--button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Deletar</button-->
             </td>
           </tr>
         </tbody>

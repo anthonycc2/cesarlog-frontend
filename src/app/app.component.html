@@ -25,29 +25,27 @@
 </div>
 
 <div *ngIf="isAthenticatedUser" class="menu">
-  <!--a routerLink="home">Home</a>&nbsp;|&nbsp;-->
-  <a routerLink="list-equipments">Equipamentos</a>&nbsp;|&nbsp;
-  <a routerLink="insert-equipment">Cadastrar equipamento</a>&nbsp;|&nbsp;
-  <!--a routerLink="insert-employee">Cadastrar colaborador</a>&nbsp;|&nbsp;-->
-  <a routerLink="insert-allocation">Vincular equipamento</a>&nbsp;|&nbsp;
-  <a routerLink="list-allocations">Equipamentos vinculados</a>&nbsp;|&nbsp;
-  <a routerLink="list-employees">Colaboradores</a>&nbsp;|&nbsp;
-  <a routerLink="list-projects">Projetos</a>&nbsp;|&nbsp;
+  <!--a routerLink="home">Home</a>-->
+  <a routerLink="list-equipments">Equipamentos</a>
+  <a *ngIf="account.level === 'SUPERVISOR'" routerLink="insert-equipment">Cadastrar equipamento</a>
+  <!--a *ngIf="account.level === 'S'" routerLink="insert-employee">Cadastrar colaborador</a>-->
+  <a *ngIf="account.level === 'GESTOR'" routerLink="insert-allocation">Vincular equipamento</a>
+  <a *ngIf="account.level != 'SUPERVISOR'" routerLink="list-allocations">Equipamentos vinculados</a>
+  <a routerLink="list-employees">Colaboradores</a>
+  <a routerLink="list-projects">Projetos</a>
   <!--a routerLink="send-message">Enviar mensagem</a>&nbsp;|&nbsp;-->
-  <a routerLink="list-accounts">Usuários</a>&nbsp;|&nbsp;
-  <a routerLink="insert-account">Cadastrar usuário</a>&nbsp;|&nbsp;
-  <!--a routerLink="#">Contato</a>&nbsp;|&nbsp;
-  <a routerLink="#">Ajuda</a-->
+  <a *ngIf="account.level === 'GESTOR'" routerLink="list-accounts">Usuários</a><!-- depois trocar para suporte-->
+  <a *ngIf="account.level === 'GESTOR'" routerLink="insert-account">Cadastrar usuário</a><!-- depois trocar para suporte-->
 </div>
 
 <!--div *ngIf="!isAthenticatedUser" class="login-bar"-->
 <div *ngIf="!isAthenticatedUser">
   <form>
     <label for="login">Login:</label>
-    <input type="text" id="login" name="login" required [(ngModel)]="user.login">
+    <input type="text" id="login" name="login" required [(ngModel)]="userLogin">
     &nbsp;
     <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" required [(ngModel)]="user.password">
+    <input type="password" id="password" name="password" required [(ngModel)]="userPassword">
     <button type="submit" (click)="tryLogin()">Entrar</button>
   </form> 
 </div>

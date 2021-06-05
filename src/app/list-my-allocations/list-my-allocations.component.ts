@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 import { FunctionsPackage } from '../functions-package';
 
 @Component({
-  selector: "app-list-allocations",
-  templateUrl: "./list-allocations.component.html"
+  selector: "app-my-list-allocations",
+  templateUrl: "./list-my-allocations.component.html"
 })
-export class ListAllocationsComponent implements OnInit {
+export class ListMyAllocationsComponent implements OnInit {
 
   allocations: Observable<Allocation[]> | undefined;
 
@@ -25,16 +25,11 @@ export class ListAllocationsComponent implements OnInit {
   }
 
   reloadData() {
-    if (window.localStorage.getItem('user_level') === "COLABORADOR") {
-      //var id = 1;
-      var id = parseInt(window.localStorage.getItem('user_employee_id'), 10);
+      var id = parseInt(window.localStorage.getItem("user_employee_id"), 10);
       this.allocations = this.allocationService.getAllocationListByEmployee(id);
-    } else {
-      this.allocations = this.allocationService.getAllocationList();
-    }
   }
-
-  delete(id: number) {
+  
+  /*delete(id: number) {
     if (confirm("Confirma a exclusão?")) {
       this.allocationService.deleteAllocation(id)
         .subscribe(
@@ -43,7 +38,7 @@ export class ListAllocationsComponent implements OnInit {
             this.reloadData();
           }, error => console.log(error)); //(error: any) => console.log(error));
     }
-  }
+  }*/
 
   update(id: number) {
     this.router.navigate(['update-allocation', id]);

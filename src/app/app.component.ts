@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+//import { Observable } from 'rxjs';
 import { Account } from './account';
 import { AccountService } from './account.service';
+import { FunctionsPackage } from './functions-package';
 
 @Component({
   selector: 'app-root',
@@ -15,19 +17,28 @@ export class AppComponent {
 
 
   isAthenticatedUser: boolean;
-  user: Account;
+  
+  //user: Account;
+  userLogin: string;
+  userPassword: string;
+
   account: Account;
   showErrorMessage: boolean;
+  hideFromManager: boolean;
 
   constructor(private accountService: AccountService,
-    private router: Router) { }
+    private router: Router,
+    private functionsPackage: FunctionsPackage) { }
 
   ngOnInit() {
     this.isAthenticatedUser = false;
-    this.user = new Account();
-    this.user.level = "C"; //////////TIRAR
+    //this.user = new Account();
+    this.userLogin = '';
+    this.userPassword = '';
+
     this.account = new Account();
     this.showErrorMessage = false;
+    this.hideFromManager = true;
 
     //window.location.reload();
 
@@ -52,17 +63,44 @@ export class AppComponent {
       this.user = { login: 'marcos', password: 'pontes', level: 'N'};*/
 
   tryLogin() {
-    this.isAthenticatedUser = this.accountService.login(this.user);
+    //this.isAthenticatedUser = this.accountService.login(this.user);
+    
+    this.accountService.getAccountByLogin(this.userLogin)
+    .subscribe(data => {
+      console.log(data)
+      this.account = data;
+    }, error => {
+      console.log(error);
+      this.functionsPackage.showErroMessage();
+    });
 
-    if (this.isAthenticatedUser) {
-      this.account = this.user;//=this.userService.getAccountByLogin(user.login);
+    if (this.account.password === this.userPassword) {
+    /*if (this.isAthenticatedUser) {
+      this.accountService.getAccountByLogin(this.user.login)
+      .subscribe(data => {
+        console.log(data)
+        this.account = data;
+      }, error => {
+        console.log(error);
+        this.functionsPackage.showErroMessage();
+      });*/
+      //this.account = this.user;
+      this.isAthenticatedUser = true;
       window.localStorage.setItem('user_login', this.account.login);
       window.localStorage.setItem('user_level', this.account.level);
-      this.showErrorMessage = false;
-      alert("O usuário logado é: " + window.localStorage.getItem('user_login'));
+      window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
+      //this.showErrorMessage = false;
+
+      if (this.account.level === "GESTOR") {
+        this.hideFromManager = false;
+      }
+
+      alert("O usuário logado é: " + this.account.login);
       //window.location.reload();
     } else {
-      this.showErrorMessage = true;
+      this.account = new Account();
+      //this.showErrorMessage = true;
+      alert("Login ou senha inválidos!");
     }
   }
 
@@ -70,7 +108,7 @@ export class AppComponent {
     this.isAthenticatedUser = false;
     this.account = new Account();
     window.localStorage.clear();
-    this.router.navigate(['/']);
+    this.router.navigate(['home']);
     //window.location.reload();
   }
 

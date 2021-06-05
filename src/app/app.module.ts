@@ -17,6 +17,8 @@ import { ListAllocationsComponent } from './list-allocations/list-allocations.co
 import { UpdateAllocationComponent } from './update-allocation/update-allocation.component';
 import { InsertAccountComponent } from './insert-account/insert-account.component';
 import { ListAccountsComponent } from './list-accounts/list-accounts.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
+import { ListMyAllocationsComponent } from './list-my-allocations/list-my-allocations.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ListAccountsComponent } from './list-accounts/list-accounts.component';
     ListAllocationsComponent,
     UpdateAllocationComponent,
     InsertAccountComponent,
-    ListAccountsComponent
+    ListAccountsComponent,
+    UpdateAccountComponent,
+    ListMyAllocationsComponent
   ],
   imports: [
     BrowserModule,

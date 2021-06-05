@@ -12,7 +12,7 @@ import { ListAllocationsComponent } from './list-allocations/list-allocations.co
 import { UpdateAllocationComponent } from './update-allocation/update-allocation.component';
 import { InsertAccountComponent } from './insert-account/insert-account.component';
 import { ListAccountsComponent } from './list-accounts/list-accounts.component';
-//import { UpdateAccountComponent } from './update-account/update-account.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
 
 //import { SendMessageComponent } from './send-message/send-message.component';
 
@@ -30,8 +30,8 @@ const routes: Routes = [
   { path: 'list-allocations', component: ListAllocationsComponent},
   { path: 'update-allocation/:id', component: UpdateAllocationComponent },
   { path: 'insert-account', component: InsertAccountComponent},
-  { path: 'list-accounts', component: ListAccountsComponent}
-  //{ path: 'update-account', component: UpdateAccountComponent}
+  { path: 'list-accounts', component: ListAccountsComponent},
+  { path: 'update-account/:id', component: UpdateAccountComponent}
 
   //{ path: 'send-message', component: SendMessageComponent }
 ];

@@ -21,6 +21,10 @@ export class AllocationService {
     return this.http.get(`${this.baseUrl}/all`);
   }
 
+  getAllocationListByEmployee(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/employee/${id}`);
+  }
+
   //POST method
   addAllocation(allocation: Allocation): Observable<Object> {
     return this.http.post(`${this.baseUrl}/add`, allocation);

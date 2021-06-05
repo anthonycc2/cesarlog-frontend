@@ -29,12 +29,15 @@ export class ListAccountsComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.accountService.deleteAccount(id)
+    if (confirm("Confirma a exclusão?")) {
+      this.accountService.deleteAccount(id)
       .subscribe(
         data => {
           console.log(data);
           this.reloadData();
         }, error => console.log(error));
+      }
+  
   }
 
   update(id: number) {

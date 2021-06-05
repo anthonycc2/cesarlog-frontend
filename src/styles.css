@@ -75,8 +75,8 @@ footer {
 }
 
 .menu {
-    color: white;
-    font-size: large;
+    /*color: white;
+    font-size: large;*/
     background-color: black;
     height: 40px;
     width: 100%;
@@ -88,6 +88,8 @@ footer {
   color: white;
   font-size: large;
   text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .menu a:hover {
