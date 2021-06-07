@@ -8,53 +8,9 @@ import { Account } from './account';
 })
 export class AccountService {
 
-  /*private isUserLoggedIn: boolean = false;*/
-
-  private account: Account;
-
   private baseUrl = 'http://localhost:8080/account';
 
-  constructor(private http: HttpClient) {
-    this.account = new Account();
-  }
-
-  /*login(user: User) {
-    if (user.login === 'silvio' && user.password === 'meira') {
-      //window.localStorage.setItem('user_loggedin', user.login);
-      //this.userLoggedIn = user;
-      //this.isUserLoggedIn = true;
-      this.showMenuEmitter.emit(true);
-    } else {
-      //this.isUserLoggedIn = false;
-      this.showMenuEmitter.emit(false);
-    }
-  }*/
-
-  login0(userForLogin: Account): boolean {
-    if (userForLogin.login === 'silviom' && userForLogin.password === 'meira') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  /////////// NO FINAL DEVE FICAR ASSIM:
-  login(user: Account): boolean {
-    this.getAccountByLogin(user.login)
-      .subscribe(data => {
-        console.log(data)
-        this.account = data;
-      }, error => {
-        console.log(error);
-        alert("Ocorreu um erro! Visualize o console para mais detalhes.");
-      });
-      
-    if (user.login === this.account.login && user.password === this.account.password) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  constructor(private http: HttpClient) { }
 
   //GET methods  
   getAccount(id: number): Observable<any> {

@@ -24,12 +24,10 @@ export class InsertAllocationComponent implements OnInit {
     private equipmentService: EquipmentService,
     private employeeService: EmployeeService,
     private router: Router,
-    private functionsPackage: FunctionsPackage) {
-
-  }
+    private functionsPackage: FunctionsPackage) { }
 
   ngOnInit() {
-    this.functionsPackage.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.allocation = new Allocation();
 
@@ -49,7 +47,7 @@ export class InsertAllocationComponent implements OnInit {
       },
         error => {
           console.log(error);
-          this.functionsPackage.showErroMessage();
+          this.functionsPackage.showErrorMessage();
         });
   }
 

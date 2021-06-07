@@ -14,9 +14,6 @@ export class HomeComponent implements OnInit {
   constructor(private functionsPackage: FunctionsPackage) { }
 
   ngOnInit(): void {
-    var dateTime = new Date();
-    this.sDateTime = this.functionsPackage.formatDate(dateTime);
-
     this.login = window.localStorage.getItem('user_login');
   }
 

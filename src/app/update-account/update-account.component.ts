@@ -23,12 +23,10 @@ export class UpdateAccountComponent implements OnInit {
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
     private router: Router,
-    private functionsPackage: FunctionsPackage) {
-
-  }
+    private functionsPackage: FunctionsPackage) { }
 
   ngOnInit() {
-    this.functionsPackage.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
     
     this.id = this.route.snapshot.params['id'];
     
@@ -38,7 +36,7 @@ export class UpdateAccountComponent implements OnInit {
         this.account = data;
       }, error => {
         console.log(error);
-        this.functionsPackage.showErroMessage();
+        this.functionsPackage.showErrorMessage();
       });
 
     this.employees = this.employeeService.getEmployeeList();
@@ -51,7 +49,7 @@ export class UpdateAccountComponent implements OnInit {
           console.log(data);
         }, error => {
           console.log(error);
-          this.functionsPackage.showErroMessage();
+          this.functionsPackage.showErrorMessage();
         });
     } else {
       alert("As senhas digitadas não coincidem!");

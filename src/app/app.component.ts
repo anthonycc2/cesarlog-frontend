@@ -12,70 +12,81 @@ import { FunctionsPackage } from './functions-package';
 export class AppComponent {
   title = 'CesarLog';
 
-  showMenu: boolean;
-  showMenuString: string;  
-
-
-  isAthenticatedUser: boolean;
   
-  //user: Account;
   userLogin: string;
   userPassword: string;
+  userLoggedIn: boolean;
+  //hideFromManager: boolean;
 
+
+  //user: Account;
   account: Account;
-  showErrorMessage: boolean;
-  hideFromManager: boolean;
 
   constructor(private accountService: AccountService,
     private router: Router,
     private functionsPackage: FunctionsPackage) { }
 
-  ngOnInit() {
-    this.isAthenticatedUser = false;
-    //this.user = new Account();
+  ngOnInit(): void {
+
     this.userLogin = '';
     this.userPassword = '';
-
+    this.userLoggedIn = false;
+    
+    //this.user = new Account();
     this.account = new Account();
-    this.showErrorMessage = false;
-    this.hideFromManager = true;
-
-    //window.location.reload();
-
-    /*if (!this.isAthenticatedUser)
-      window.location.href = 'login.html';*/
   }
 
-  /*///////OPCAO COM EVENT-EMITTER
-  this.showMenu = false;
-  this.showMenuString = this.showMenu.toString();
-    
-    this.userService.showMenuEmitter.subscribe(
-      mostrar => this.showMenu = mostrar
-    );*/
-
-    /////OPCAO COM LOCAL-STORAGE
-    /*this.user = new User();
-    //this.user = this.userService.userLoggedIn;
-    if (window.localStorage.getItem('user_logged') != '')
-      this.user.login = window.localStorage.getItem('user_logged');
-    else
-      this.user = { login: 'marcos', password: 'pontes', level: 'N'};*/
-
-  tryLogin() {
-    //this.isAthenticatedUser = this.accountService.login(this.user);
-    
+  tryLogin(): void {
     this.accountService.getAccountByLogin(this.userLogin)
     .subscribe(data => {
       console.log(data)
       this.account = data;
     }, error => {
       console.log(error);
-      this.functionsPackage.showErroMessage();
+      this.functionsPackage.showErrorMessage();
     });
 
     if (this.account.password === this.userPassword) {
-    /*if (this.isAthenticatedUser) {
+      this.userLoggedIn = true;
+      window.localStorage.setItem('user_login', this.account.login);
+      window.localStorage.setItem('user_level', this.account.level);
+      window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
+
+      //--------------------------------------------------DESABILITAR ISSO AQUI NO FINAL DE TUDO
+      alert("O usuário logado é: " + this.account.login);
+    } else {
+      this.account = new Account();
+      alert("Login ou senha inválidos!");
+    }
+  }
+
+  //Opção simples para testes
+  tryLogin1(): void {
+
+    if (this.userLogin === 'silviom' && this.userPassword === 'meira') {
+      this.account.id = 1;
+      this.account.login = this.userLogin;
+      this.account.password = this.userPassword;
+      this.account.level = "GESTOR";
+      this.account.employee.id = 6;
+
+      this.userLoggedIn = true;
+      window.localStorage.setItem('user_login', this.account.login);
+      window.localStorage.setItem('user_level', this.account.level);
+      window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
+      alert("O usuário logado é: " + this.account.login);
+    } else {
+      this.account = new Account();
+      alert("Login ou senha inválidos!");
+    }
+  
+  }
+
+  // Opção em desuso
+  /*tryLogin2() {
+    this.userLoggedIn = this.accountService.login(this.user);
+    
+    if (this.userLoggedIn) {
       this.accountService.getAccountByLogin(this.user.login)
       .subscribe(data => {
         console.log(data)
@@ -83,9 +94,7 @@ export class AppComponent {
       }, error => {
         console.log(error);
         this.functionsPackage.showErroMessage();
-      });*/
-      //this.account = this.user;
-      this.isAthenticatedUser = true;
+      });
       window.localStorage.setItem('user_login', this.account.login);
       window.localStorage.setItem('user_level', this.account.level);
       window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
@@ -102,24 +111,18 @@ export class AppComponent {
       //this.showErrorMessage = true;
       alert("Login ou senha inválidos!");
     }
-  }
+  }*/
 
-  logout() {
-    this.isAthenticatedUser = false;
+
+  logout(): void {
+    this.userLoggedIn = false;
     this.account = new Account();
     window.localStorage.clear();
     this.router.navigate(['home']);
-    //window.location.reload();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.tryLogin();
-    //this.submittedForm = true;
-    //this.gotoList();
   }
-
-  /*gotoList() {
-    this.router.navigate(['/list-equipments']);
-  }*/
 
 }

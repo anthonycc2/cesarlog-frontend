@@ -1,11 +1,8 @@
-<div [hidden]="submittedForm" class="form-general">
+<div class="form-general">
     <h1><strong>Alterar Equipamento</strong></h1>
+    <hr>
     <form (ngSubmit)="onSubmit()">
       <table>
-        <tr>
-          <td><label for="id">ID:</label></td>
-          <td><span id="id" class="identifier">{{ equipment.id }}</span></td>
-        </tr>
         <tr>
           <td><label for="code">Tombamento:</label></td>
           <td><input type="text" class="form-control" id="code" required [(ngModel)]="equipment.code" name="code"></td>
@@ -13,27 +10,31 @@
 
         <tr>
           <td><label for="category">Categoria:</label></td>
-          <td><input type="text" class="form-control" id="category" required [(ngModel)]="equipment.category.id" name="category"></td>
+          <td>
+            <select [(ngModel)]="equipment.category.id" id="category" name="category">
+              <option *ngFor="let category of categories | async" [value]="category.id">{{ category.name }}</option>
+            </select>
+          </td>
         </tr>
   
         <tr>
           <td><label for="model">Modelo:</label></td>
-          <td><input type="text" class="form-control" id="model" required [(ngModel)]="equipment.model.id" name="model"></td>
-        </tr>
-  
-        <tr>
-          <td><label for="project">Projeto:</label></td>
-          <td><input type="text" class="form-control" id="project" required [(ngModel)]="equipment.project.id" name="project"></td>
-        </tr>
-  
-        <tr>
-          <td><label for="locationDate">Data de localização:</label></td>
-          <td><input type="text" class="form-control" id="locationDate" required [(ngModel)]="equipment.locationDate" name="locationDate"></td>
+          <td>
+            <select [(ngModel)]="equipment.model.id" id="model" name="model">
+              <option *ngFor="let model of models | async" [value]="model.id">{{ model.name }}</option>
+            </select>
+          </td>
         </tr>
   
         <tr>
           <td><label for="observation">Observação:</label></td>
           <td><input type="text" class="form-control" id="observation" [(ngModel)]="equipment.observation" name="observation"></td>
+        </tr>
+  
+        <tr>
+          <td><label for="maintenance">Observação:</label></td>
+          <td><input type="checkbox" [(ngModel)]="equipment.maintenance" id="maintenance" name="maintenance">
+          </td>
         </tr>
 
         <tr>
@@ -41,40 +42,5 @@
           <td></td>
         </tr>	
       </table>
-      <!--/div-->
-  
-      <!--div class="form-group">
-        <label for="categoryId">Categoria ID</label>
-        <input type="text" class="form-control" id="categoryId" required [(ngModel)]="equipment.category.id" name="categoryId">
-      </div>
-  
-      <div class="form-group">
-        <label for="modelId">Modelo ID</label>
-        <input type="text" class="form-control" id="modelId" required [(ngModel)]="equipment.model.id" name="modelId">
-      </div>
-    
-      <div class="form-group">
-        <label for="projectId">Projeto ID</label>
-        <input type="text" class="form-control" id="projectId" required [(ngModel)]="equipment.project.id" name="projectId">
-      </div>
-    
-      <div class="form-group">
-        <label for="employeeId">Colaborador ID</label>
-        <input type="text" class="form-control" id="employeeId" required [(ngModel)]="equipment.employeeId.id" name="employeeId">
-      </div>
-  
-      <div class="form-group">
-        <label for="specification">Especificação</label>
-        <input type="text" class="form-control" id="specification" required [(ngModel)]="equipment.specification" name="specification">
-      </div-->
-    
     </form>
-  </div>
-  
-  <div [hidden]="!submittedForm">
-    <h4>Cadastro submetido com sucesso!</h4>
-  </div>
-  
-  <div [hidden]="!showErrorMessage">
-    <h4>Ocorreu um erro!</h4>
   </div>

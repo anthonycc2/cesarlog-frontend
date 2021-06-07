@@ -1,5 +1,6 @@
 <div class="form-general">
   <h1><strong>Cadastrar Equipamento</strong></h1>
+  <hr>
   <form (ngSubmit)="onSubmit()">
     <table>
       <tr>
@@ -26,33 +27,21 @@
       </tr>
 
       <tr>
-        <td><label for="project">Projeto:</label></td>
-        <td>
-          <select [(ngModel)]="equipment.project.id" id="project" name="project">
-            <option *ngFor="let project of projects | async" [value]="project.id">{{ project.name }}</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td><label for="locationDate">Data de localização:</label></td>
-        <td><input type="text" class="form-control" id="locationDate" required [(ngModel)]="equipment.locationDate" name="locationDate"></td>
-      </tr>
-
-      <tr>
         <td><label for="observation">Observação:</label></td>
         <td><input type="text" class="form-control" id="observation" [(ngModel)]="equipment.observation" name="observation"></td>
       </tr>
 
       <tr>
-        <td><button type="submit">Submeter</button><td>
-		    <td></td>
-	    </tr>	
-	  </table>
+        <td><label for="maintenance">Em Manutenção:</label></td>
+        <td><input type="checkbox" [(ngModel)]="equipment.maintenance" id="maintenance" name="maintenance">
+        </td>
+      </tr>
 
+      <tr>
+        <td><button type="submit" class="general-button">Salvar</button>
+        <td>
+        <td></td>
+      </tr>
+    </table>
   </form>
-</div>
-
-<div [hidden]="!showErrorMessage">
-  <h4>Ocorreu um erro!</h4>
 </div>

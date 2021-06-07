@@ -9,6 +9,7 @@ import { Equipment } from '../equipment';
 import { Category } from '../category';
 import { Model } from '../model';
 import { Project } from '../project';
+import { FunctionsPackage } from '../functions-package';
 
 @Component({
   selector: 'app-insert-equipment',
@@ -17,48 +18,46 @@ import { Project } from '../project';
 export class InsertEquipmentComponent implements OnInit {
 
   equipment: Equipment;
-  categories: Observable<Category[]> | undefined
-  models: Observable<Model[]> | undefined
-  projects: Observable<Project[]> | undefined
-  showErrorMessage: boolean;
+  categories: Observable<Category[]> | undefined;
+  models: Observable<Model[]> | undefined;
+  projects: Observable<Project[]> | undefined;
 
   constructor(
     private equipmentService: EquipmentService,
     private categoryService: CategoryService,
     private modelService: ModelService,
     private projectService: ProjectService,
-    private router: Router) {
+    private router: Router,
+    private functionsPackage: FunctionsPackage) { }
 
-  }
+  ngOnInit(): void {
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
 
-  ngOnInit() {
     this.equipment = new Equipment();
-    this.showErrorMessage = false;
 
     this.projects = this.projectService.getProjectList();
     this.categories = this.categoryService.getCategoryList();
     this.models = this.modelService.getModelList();
   }
 
-  save() {
+  save(): void {
     this.equipmentService
       .addEquipment(this.equipment).subscribe(data => {
         console.log(data);
-        this.showErrorMessage = false;
-        //this.equipment = new Equipment();
+        this.functionsPackage.showSucessMessage();
       },
         error => {
+          this.functionsPackage.showErrorMessage();
           console.log(error);
-          this.showErrorMessage = true;
         });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.save();
     this.gotoList();
   }
 
-  gotoList() {
+  gotoList(): void {
     this.router.navigate(['list-equipments']);
   }
 }

@@ -19,7 +19,7 @@ export class ListAllocationsComponent implements OnInit {
     private functionsPackage: FunctionsPackage) {}
 
   ngOnInit() {
-    this.functionsPackage.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.reloadData();
   }
@@ -62,7 +62,7 @@ export class ListAllocationsComponent implements OnInit {
             this.reloadData();
           }, error => { //(error: any) => console.log(error));
             console.log(error);
-            this.functionsPackage.showErroMessage();
+            this.functionsPackage.showErrorMessage();
           });
     }
   }
@@ -80,7 +80,7 @@ export class ListAllocationsComponent implements OnInit {
             this.reloadData();
           }, error => { //(error: any) => console.log(error));
             console.log(error);
-            this.functionsPackage.showErroMessage();
+            this.functionsPackage.showErrorMessage();
           });
     }
   }

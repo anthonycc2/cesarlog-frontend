@@ -1,57 +1,73 @@
 import { Component, OnInit } from '@angular/core';
-import { Equipment } from '../equipment';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from "rxjs";
 import { EquipmentService } from '../equipment.service';
+import { CategoryService } from '../category.service';
+import { ModelService } from '../model.service';
+import { ProjectService } from '../project.service';
+import { Equipment } from '../equipment';
+import { Category } from '../category';
+import { Model } from '../model';
+import { Project } from '../project';
+import { FunctionsPackage } from '../functions-package';
 
 @Component({
   selector: 'app-update-equipment',
-  templateUrl: './update-equipment.component.html'//,
-  //styleUrls: ['./update-equipment.component.css']
+  templateUrl: './update-equipment.component.html'
 })
 export class UpdateEquipmentComponent implements OnInit {
-  submittedForm: boolean = false;
-  showErrorMessage: boolean;
+
   id: number;
   equipment: Equipment;
+  categories: Observable<Category[]> | undefined;
+  models: Observable<Model[]> | undefined;
+  projects: Observable<Project[]> | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-    private equipmentService: EquipmentService) { }
+  constructor(
+    private equipmentService: EquipmentService,
+    private categoryService: CategoryService,
+    private modelService: ModelService,
+    private projectService: ProjectService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private functionsPackage: FunctionsPackage) { }
 
-  ngOnInit() {
-    //this.equipment = new Equipment();
-    this.submittedForm = false;
-    this.showErrorMessage = false;
+  ngOnInit(): void {
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.id = this.route.snapshot.params['id'];
-    
+
     this.equipmentService.getEquipment(this.id)
       .subscribe(data => {
         console.log(data)
         this.equipment = data;
       }, error => {
         console.log(error);
-        this.showErrorMessage = true; 
+        this.functionsPackage.showErrorMessage();
       });
+
+    this.projects = this.projectService.getProjectList();
+    this.categories = this.categoryService.getCategoryList();
+    this.models = this.modelService.getModelList();
   }
 
-  update() {
+  update(): void {
     this.equipmentService.updateEquipment(this.equipment)
       .subscribe(data => {
         console.log(data);
-        //this.equipment = new Equipment();
+        this.functionsPackage.showSucessMessage();
       }, error => {
         console.log(error);
-        this.showErrorMessage = true;
+        this.functionsPackage.showErrorMessage();
       });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.update();
-    this.submittedForm = true;
     this.gotoList();
   }
 
-  gotoList() {
-    this.router.navigate(['/list-equipments']);
+  gotoList(): void {
+    this.router.navigate(['list-equipments']);
   }
 }

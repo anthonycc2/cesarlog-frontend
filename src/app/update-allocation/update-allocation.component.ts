@@ -17,9 +17,7 @@ export class UpdateAllocationComponent implements OnInit {
     private allocationService: AllocationService,
     private route: ActivatedRoute,
     private router: Router,
-    private functionsPackage: FunctionsPackage) {
-
-  }
+    private functionsPackage: FunctionsPackage) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -30,7 +28,7 @@ export class UpdateAllocationComponent implements OnInit {
         this.allocation = data;
       }, error => {
         console.log(error);
-        this.functionsPackage.showErroMessage();
+        this.functionsPackage.showErrorMessage();
       });
   }
 
@@ -43,7 +41,7 @@ export class UpdateAllocationComponent implements OnInit {
         console.log(data);
       }, error => {
         console.log(error);
-        this.functionsPackage.showErroMessage();
+        this.functionsPackage.showErrorMessage();
       });
   }
 

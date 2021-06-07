@@ -19,12 +19,10 @@ export class InsertAccountComponent implements OnInit {
   constructor(private accountService: AccountService,
     private employeeService: EmployeeService,
     private router: Router,
-    private functionsPackage: FunctionsPackage) {
-
-  }
+    private functionsPackage: FunctionsPackage) { }
 
   ngOnInit() {
-    this.functionsPackage.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.password2 = "";
     this.account = new Account();
@@ -42,7 +40,7 @@ export class InsertAccountComponent implements OnInit {
         },
           error => {
             console.log(error);
-            this.functionsPackage.showErroMessage();
+            this.functionsPackage.showErrorMessage();
           });
     } else {
       alert("As senhas digitadas não coincidem!");

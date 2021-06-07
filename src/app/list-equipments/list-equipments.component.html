@@ -1,28 +1,26 @@
 <div class="list-panel">
   <h2>Lista de equipamentos</h2>
-  <hr>
   <table width="100%">
     <thead>
       <tr>
-        <!--th width="10%">ID</th-->
         <th width="10%">Tombamento</th>
         <th width="20%">Categoria</th>
         <th width="20%">Modelo</th>
-        <th width="10%">Projeto</th>
-        <th width="20%">Data da localização</th>
+        <th width="20%">Observação</th>
+        <th width="10%">Manutenção?</th>
         <th width="20%">Ações</th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let equipment of equipments | async">
-          <!--td>{{equipment.id}}</td-->
           <td>{{equipment.code}}</td>
           <td>{{equipment.category.name}}</td>
           <td>{{equipment.model.name}}</td>
-          <td>{{equipment.project.name}}</td>
-          <td>{{equipment.locationDate}}</td>
-          <td><button (click)="delete(equipment.id)" class="btn btn-danger">Deletar</button>
-            <button (click)="update(equipment.id)" class="btn btn-info" style="margin-left: 10px">Alterar</button>
+          <td>{{equipment.observation}}</td>
+          <td><input type="checkbox" [(ngModel)]="equipment.maintenance" id="maintenance" name="maintenance" disabled></td>
+          <td>
+            <button (click)="update(equipment.id)" class="general-button">Alterar</button>
+            <button (click)="delete(equipment.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
           </td>
         </tr>
       </tbody>

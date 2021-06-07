@@ -6,25 +6,43 @@ import { Router } from '@angular/router';
 })
 export class FunctionsPackage {
 
-    constructor(private router: Router) { }
+    /**
+     * Mensagem padrão de erro.
+     */
+    public static ERROR_MESSAGE = "Ocorreu um erro! Visualize o console para mais detalhes.";
+
+    /**
+     * Mensagem padrão de erro.
+     */
+    public static SUCESS_MESSAGE = "Operação realizada com sucesso!";
+
+
+    constructor() { }
+
+    /**
+     * Exibe uma mensagem pop-up de erro ao usuário.
+     */
+    public showErrorMessage(): void {
+        alert(FunctionsPackage.ERROR_MESSAGE);
+    }
+
+    /**
+    * Exibe uma mensagem pop-up de sucesso ao usuário.
+    */
+    public showSucessMessage(): void {
+        alert(FunctionsPackage.ERROR_MESSAGE);
+    }
 
     /**
      * Verifica se o usuário está logado; caso contrário, direciona para a home page.
      */
-    public verifyAuthenticatedUser() {
+     public verifyAuthenticatedUser(router: Router) {
         if (window.localStorage.length === 0) {
             alert("Você não está logado! Por favor, faça login.");
-            this.router.navigate(['home']);
+            router.navigate(['home']);
         }
     }
-
-    /**
-     * Exibe uma mensagem de erro pop-up ao usuário.
-     */
-    public showErroMessage(): void {
-        alert("Ocorreu um erro! Visualize o console para mais detalhes.");
-    }
-
+    
     /**
      * 
      * @param date A data-hora a ser formatada
@@ -75,54 +93,3 @@ export class FunctionsPackage {
     }
 
 }
-/*
-function verifyAuthenticatedUser() {
-
-    if (window.localStorage.length === 0) {
-        alert("Você não está logado! Por favor, faça login.");
-        this.router.navigate(['home']);
-    }
-}
-
-function formatDate(date: Date): string {
-    var nDay = date.getDay();
-    var nMonth = date.getMonth();
-    var nYear = date.getFullYear();
-    var nHours = date.getHours();
-    var nMinutes = date.getMinutes();
-    var nSeconds = date.getSeconds();
-
-    var nDayS, sMonth, sHours, sMinutes, sSeconds;
-
-    if (nDay < 10) {
-        nDayS = "0" + nDay.toString();
-    } else {
-        nDayS = nDay.toString();
-    }
-
-    if (nMonth < 10) {
-        sMonth = "0" + nMonth.toString();
-    } else {
-        sMonth = nMonth.toString();
-    }
-
-    if (nHours < 10) {
-        sHours = "0" + nHours.toString();
-    } else {
-        sHours = nHours.toString();
-    }
-
-    if (nMinutes < 10) {
-        sMinutes = "0" + nMinutes.toString();
-    } else {
-        sMinutes = nMinutes.toString();
-    }
-
-    if (nSeconds < 10) {
-        sSeconds = "0" + nSeconds.toString();
-    } else {
-        sSeconds = nSeconds.toString();
-    }
-
-    return nYear + "/" + sMonth + "/" + nDayS + " " + sHours +":" + sMinutes + ":" + sSeconds;
-}*/

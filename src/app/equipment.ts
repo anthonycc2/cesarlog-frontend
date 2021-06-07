@@ -9,7 +9,7 @@ export class Equipment {
     model: Model;
     project: Project;
     observation: string;
-    locationDate: string;
+    maintenance: boolean;
 
     constructor() {
         this.category = new Category();

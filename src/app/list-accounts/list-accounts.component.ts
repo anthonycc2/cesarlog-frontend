@@ -19,7 +19,7 @@ export class ListAccountsComponent implements OnInit {
     private functionsPackage: FunctionsPackage) {}
 
   ngOnInit() {
-    this.functionsPackage.verifyAuthenticatedUser();
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.reloadData();
   }
