@@ -1,20 +1,23 @@
 <div class="list-panel">
-  <h2>Lista de colaboradores</h2>
-  <hr>
+  <h1>Lista de colaboradores</h1>
   <table width="100%">
     <thead>
       <tr>
-        <th width="10%">ID</th>
-        <th width="30%">Nome</th>
-        <th width="60%">Função</th>
+        <th width="10%">Matrícula</th>
+        <th width="25%">Nome</th>
+        <th width="25%">Função</th>
+        <th width="20%">E-mail</th>
+        <th width="20%">Projeto</th>
       </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees | async">
-          <td>{{employee.id}}</td>
-          <td>{{employee.name}}</td>
-          <td>{{employee.role}}</td>
-        </tr>
-      </tbody>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees | async">
+        <td>{{employee.registration}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.role}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.project.name}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

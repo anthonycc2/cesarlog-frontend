@@ -1,5 +1,5 @@
 <div class="list-panel">
-  <h2>Lista de equipamentos</h2>
+  <h1>Lista de equipamentos</h1>
   <table width="100%">
     <thead>
       <tr>
@@ -19,8 +19,8 @@
           <td>{{equipment.observation}}</td>
           <td><input type="checkbox" [(ngModel)]="equipment.maintenance" id="maintenance" name="maintenance" disabled></td>
           <td>
-            <button (click)="update(equipment.id)" class="general-button">Alterar</button>
-            <button (click)="delete(equipment.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
+            <button *ngIf="userLevel === 'SUPERVISOR'" (click)="update(equipment.id)" class="general-button">Alterar</button>
+            <button *ngIf="userLevel === 'SUPERVISOR'" (click)="delete(equipment.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
           </td>
         </tr>
       </tbody>

@@ -3,6 +3,7 @@ import { EmployeeService } from "../employee.service";
 import { Employee } from "../employee";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
+import { FunctionsPackage } from "../functions-package";
 
 @Component({
   selector: "app-list-employees",
@@ -11,20 +12,18 @@ import { Router } from '@angular/router';
 export class ListEmployeesComponent implements OnInit {
   employees: Observable<Employee[]> | undefined;
 
-  constructor(private employeeService: EmployeeService,
-    private router: Router) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router,
+    private functionsPackage: FunctionsPackage) {}
 
-  ngOnInit() {
-    if (window.localStorage.length === 0) {
-    //if (window.localStorage.length === 0 || window.localStorage.getItem('user_login') === '') {
-      alert("Usuário não logado!!!");
-      this.router.navigate(['/']);
-    }
+  ngOnInit(): void {
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
   
     this.reloadData();
   }
 
-  reloadData() {
+  reloadData(): void {
     this.employees = this.employeeService.getEmployeeList();
   }
 

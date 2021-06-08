@@ -10,6 +10,7 @@ import { FunctionsPackage } from "../functions-package";
   templateUrl: "./list-equipments.component.html"
 })
 export class ListEquipmentsComponent implements OnInit {
+  userLevel: string;
   equipments: Observable<Equipment[]> | undefined;
 
   constructor(
@@ -18,6 +19,10 @@ export class ListEquipmentsComponent implements OnInit {
     private functionsPackage: FunctionsPackage) { }
 
   ngOnInit(): void {
+    this.functionsPackage.verifyAuthenticatedUser(this.router);
+    
+    this.userLevel = window.localStorage.getItem('user_level');
+
     this.reloadData();
   }
 
@@ -26,17 +31,19 @@ export class ListEquipmentsComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.equipmentService.deleteEquipment(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.functionsPackage.showSucessMessage();
-          this.reloadData();
-        },
-        error => {
-          console.log(error);
-          this.functionsPackage.showErrorMessage();
-        });
+    if (confirm("Confirma a exclusão?")) {
+      this.equipmentService.deleteEquipment(id)
+        .subscribe(
+          data => {
+            console.log(data);
+            this.functionsPackage.showSucessMessage();
+            this.reloadData();
+          },
+          error => {
+            console.log(error);
+            this.functionsPackage.showErrorMessage();
+          });
+    }
   }
 
   update(id: number): void {

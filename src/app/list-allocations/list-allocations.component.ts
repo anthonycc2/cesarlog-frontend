@@ -53,7 +53,7 @@ export class ListAllocationsComponent implements OnInit {
     if (confirm("Confirma o vínculo com o equipamento?")) {
       var dateTime = new Date();
       allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
-      allocation.status = "CONFIRMADO";
+      allocation.status = "ACEITO";
 
       this.allocationService.updateAllocation(allocation)
         .subscribe(

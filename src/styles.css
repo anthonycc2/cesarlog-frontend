@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
@@ -62,8 +61,6 @@ footer {
 }
 
 .menu-bar {
-  /*color: white;
-  font-size: large;*/
   background-color: black;
   height: 40px;
   width: 100%;
@@ -86,13 +83,9 @@ footer {
 /************************************ BARRA DE LOGIN ************************************/
 
 .login-bar {
-  /*font-size: large;*/
   background-color: lightgray;
   height: 50px;
-  /*width: 100%;*/
   line-height: 50px;
-  /*text-align: left;
-  display: flex;*/
   border-top: 1px solid;
   border-bottom: 1px solid;
   border-color: black;
@@ -112,24 +105,19 @@ footer {
   border-radius: 5px;
   font-size: medium;
   background-color: wheat;
-  /*line-height: 60px;
-  padding-top: 5px;
-  padding-bottom: 5px;*/
 }
 
-/*.login-bar form button {*/
 .general-button, .danger-button {
   color: white;
-  background-color: orangered;
   border: none;
-  /*border-color: orange;
-  border-style: 1px solid;*/
   border-radius: 5px;
   height: 30px;
   width: 90px;
   font-size: medium;
-  
-  margin-left: 20px;
+}
+
+.general-button {
+  background-color: orangered;
 }
 
 .danger-button {
@@ -139,8 +127,6 @@ footer {
 .general-button:hover, .danger-button:hover {
   opacity: 80%;
 }
-
-
 
 /************************************ FORMULÁRIOS *********************************************/
 
@@ -154,12 +140,12 @@ footer {
   border-radius: 5px;
 }
 
-/*form-group {
-
-}*/
-
 .form-general h1 {
   color: orangered;
+}
+
+.form-general form table tr {
+  height: 40px;
 }
 
 .form-general form label {
@@ -178,6 +164,8 @@ footer {
 }
 
 .form-general form select {
+  color: orangered;
+  background-color: wheat;
   height: 30px;
   border-color: gray;
   border-style: 1px solid;
@@ -208,7 +196,7 @@ footer {
   border-style: 1px solid black;
 }
 
-.list-panel h2 {
+.list-panel h1 {
   color: orangered;
 }
 
@@ -226,7 +214,7 @@ footer {
 }
 
 .list-panel table tbody tr:hover {
-  background-color: lightgray;
+  background-color: wheat;
 }
 
 

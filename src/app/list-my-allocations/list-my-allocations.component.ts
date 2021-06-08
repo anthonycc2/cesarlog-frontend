@@ -18,37 +18,22 @@ export class ListMyAllocationsComponent implements OnInit {
     private router: Router,
     private functionsPackage: FunctionsPackage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.reloadData();
   }
 
-  reloadData() {
+  reloadData(): void {
       var id = parseInt(window.localStorage.getItem("user_employee_id"), 10);
       this.allocations = this.allocationService.getAllocationListByEmployee(id);
   }
   
-  /*delete(id: number) {
-    if (confirm("Confirma a exclusão?")) {
-      this.allocationService.deleteAllocation(id)
-        .subscribe(
-          data => { //(data: any) => {
-            console.log(data);
-            this.reloadData();
-          }, error => console.log(error)); //(error: any) => console.log(error));
-    }
-  }*/
-
-  update(id: number) {
-    this.router.navigate(['update-allocation', id]);
-  }
-
-  confirm(allocation: Allocation) {
+  confirm(allocation: Allocation): void {
     if (confirm("Confirma o vínculo com o equipamento?")) {
       var dateTime = new Date();
-      allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
-      allocation.status = "CONFIRMADO";
+      allocation.acceptationDate = this.functionsPackage.formatDate(dateTime);
+      allocation.status = "ACEITO";
 
       this.allocationService.updateAllocation(allocation)
         .subscribe(
@@ -62,21 +47,30 @@ export class ListMyAllocationsComponent implements OnInit {
     }
   }
 
-  return(allocation: Allocation) {
+  return(allocation: Allocation): void {
     if (confirm("Confirma a devolução do equipamento?")) {
       var dateTime = new Date();
-      allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
+      allocation.returnDate = this.functionsPackage.formatDate(dateTime);
       allocation.status = "DEVOLVIDO";
       
       this.allocationService.updateAllocation(allocation)
         .subscribe(
-          data => { //(data: any) => {
+          data => {
             console.log(data);
+            this.functionsPackage.showSucessMessage();
             this.reloadData();
-          }, error => { //(error: any) => console.log(error));
+          }, error => {
             console.log(error);
             this.functionsPackage.showErrorMessage();
           });
     }
+  }
+
+  detail(id: number): void {
+    this.router.navigate(['detail-allocation', id]);
+  }
+
+  update(id: number): void {
+    this.router.navigate(['update-allocation', id]);
   }
 }
