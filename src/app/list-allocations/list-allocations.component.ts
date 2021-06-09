@@ -4,6 +4,8 @@ import { Allocation } from "../allocation";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { FunctionsPackage } from '../functions-package';
+import { EmployeeService } from "../employee.service";
+import { Employee } from "../employee";
 
 @Component({
   selector: "app-list-allocations",
@@ -11,45 +13,50 @@ import { FunctionsPackage } from '../functions-package';
 })
 export class ListAllocationsComponent implements OnInit {
 
+  employee: Employee;
   allocations: Observable<Allocation[]> | undefined;
 
   constructor(
     private allocationService: AllocationService,
+    private employeeService: EmployeeService,
     private router: Router,
     private functionsPackage: FunctionsPackage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.reloadData();
   }
 
-  reloadData() {
-    if (window.localStorage.getItem('user_level') === "COLABORADOR") {
-      //var id = 1;
-      var id = parseInt(window.localStorage.getItem('user_employee_id'), 10);
-      this.allocations = this.allocationService.getAllocationListByEmployee(id);
+  reloadData(): void {
+    if (window.localStorage.getItem('user_level') === "GESTOR") {
+      var id = parseInt(window.localStorage.getItem('user_project_id'), 10);
+      this.allocations = this.allocationService.getAllocationListByProject(id);
     } else {
       this.allocations = this.allocationService.getAllocationList();
     }
   }
 
-  delete(id: number) {
+  delete(id: number): void {
     if (confirm("Confirma a exclusão?")) {
       this.allocationService.deleteAllocation(id)
         .subscribe(
-          data => { //(data: any) => {
+          data => {
             console.log(data);
+            this.functionsPackage.showSucessMessage();
             this.reloadData();
-          }, error => console.log(error)); //(error: any) => console.log(error));
+          }, error => {
+            console.log(error);
+            this.functionsPackage.showErrorMessage();
+          });
     }
   }
 
-  update(id: number) {
+  update(id: number): void {
     this.router.navigate(['update-allocation', id]);
   }
 
-  confirm(allocation: Allocation) {
+  /*confirm(allocation: Allocation): void {
     if (confirm("Confirma o vínculo com o equipamento?")) {
       var dateTime = new Date();
       allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
@@ -67,7 +74,7 @@ export class ListAllocationsComponent implements OnInit {
     }
   }
 
-  return(allocation: Allocation) {
+  return(allocation: Allocation): void {
     if (confirm("Confirma a devolução do equipamento?")) {
       var dateTime = new Date();
       allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
@@ -83,5 +90,5 @@ export class ListAllocationsComponent implements OnInit {
             this.functionsPackage.showErrorMessage();
           });
     }
-  }
+  }*/
 }

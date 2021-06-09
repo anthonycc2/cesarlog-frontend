@@ -25,7 +25,7 @@ export class UpdateAccountComponent implements OnInit {
     private router: Router,
     private functionsPackage: FunctionsPackage) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
     
     this.id = this.route.snapshot.params['id'];
@@ -42,11 +42,12 @@ export class UpdateAccountComponent implements OnInit {
     this.employees = this.employeeService.getEmployeeList();
   }
 
-  update() {
+  update(): void {
     if (this.account.password === this.password2) {
       this.accountService.updateAccount(this.account)
         .subscribe(data => {
           console.log(data);
+          this.functionsPackage.showSucessMessage();
         }, error => {
           console.log(error);
           this.functionsPackage.showErrorMessage();
@@ -56,12 +57,12 @@ export class UpdateAccountComponent implements OnInit {
     }    
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.update();
     this.gotoList();
   }
 
-  gotoList() {
+  gotoList(): void {
     this.router.navigate(['list-accounts']);
   }
 }

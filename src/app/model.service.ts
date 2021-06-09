@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Model } from './model';
+import { apiUrl } from './service-path';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ModelService {
 
   model: Model;
 
-  private baseUrl = 'http://localhost:8080/model';
+  private baseUrl = apiUrl + '/model';
 
   constructor(private http: HttpClient) {
     this.model = new Model();

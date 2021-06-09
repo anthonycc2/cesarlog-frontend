@@ -16,12 +16,13 @@ export class InsertAccountComponent implements OnInit {
   account: Account;
   employees: Observable<Employee[]> | undefined;
 
-  constructor(private accountService: AccountService,
+  constructor(
+    private accountService: AccountService,
     private employeeService: EmployeeService,
     private router: Router,
     private functionsPackage: FunctionsPackage) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.password2 = "";
@@ -30,13 +31,13 @@ export class InsertAccountComponent implements OnInit {
     this.employees = this.employeeService.getEmployeeList();
   }
 
-  save() {
+  save(): void {
     if (this.account.password === this.password2) {
 
       this.accountService.addAccount(this.account)
         .subscribe(data => {
           console.log(data);
-          //this.account = new Account();
+          this.functionsPackage.showSucessMessage();
         },
           error => {
             console.log(error);
@@ -47,12 +48,12 @@ export class InsertAccountComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.save();
     this.gotoList();
   }
 
-  gotoList() {
+  gotoList(): void {
     this.router.navigate(['list-accounts']);
   }
 }

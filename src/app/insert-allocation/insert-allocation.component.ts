@@ -18,15 +18,15 @@ export class InsertAllocationComponent implements OnInit {
   allocation: Allocation;
   equipments: Observable<Equipment[]> | undefined;
   employees: Observable<Employee[]> | undefined;
-  showErrorMessage: boolean;
 
-  constructor(private allocationService: AllocationService,
+  constructor(
+    private allocationService: AllocationService,
     private equipmentService: EquipmentService,
     private employeeService: EmployeeService,
     private router: Router,
     private functionsPackage: FunctionsPackage) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.allocation = new Allocation();
@@ -35,7 +35,7 @@ export class InsertAllocationComponent implements OnInit {
     this.employees = this.employeeService.getEmployeeList();
   }
 
-  save() {
+  save(): void {
     var dateTime = new Date();
     this.allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
     this.allocation.status = "PENDENTE";
@@ -43,6 +43,7 @@ export class InsertAllocationComponent implements OnInit {
     this.allocationService.addAllocation(this.allocation)
       .subscribe(data => {
         console.log(data);
+        this.functionsPackage.showSucessMessage();
         //this.allocation = new Allocation();
       },
         error => {
@@ -51,12 +52,12 @@ export class InsertAllocationComponent implements OnInit {
         });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.save();
     this.gotoList();
   }
 
-  gotoList() {
+  gotoList(): void {
     this.router.navigate(['/list-allocations']);
   }
 }

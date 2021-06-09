@@ -173,6 +173,11 @@ footer {
   font-size: medium;
 }
 
+.static-field {
+  font-size: medium;
+  color: orangered;
+}
+
 /*.form-general form button {
   color: white;
   background-color: orangered;
@@ -202,7 +207,7 @@ footer {
 
 .list-panel table {
   border-style: 1px;
-  /*border-color: lightgray;*/
+  border-color: orangered;
   border: solid;
 }
 

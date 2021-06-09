@@ -12,15 +12,15 @@
 <div *ngIf="userLoggedIn" class="menu-bar">
   <!--a routerLink="home">Home</a>-->
   <a routerLink="list-my-allocations">Meus equipamentos</a>
-  <a *ngIf="account.level === 'SUPERVISOR'" routerLink="insert-equipment">Cadastrar equipamento</a>
+  <a *ngIf="account.level === 'SUPORTE'" routerLink="insert-equipment">Cadastrar equipamento</a>
   <!--a *ngIf="account.level === 'S'" routerLink="insert-employee">Cadastrar colaborador</a>-->
-  <a *ngIf="account.level === 'GESTOR'" routerLink="insert-allocation">Vincular equipamento</a>
-  <a *ngIf="account.level != 'SUPERVISOR'" routerLink="list-allocations">Equipamentos vinculados</a>
+  <a *ngIf="account.level != 'COLABORADOR'" routerLink="insert-allocation">Vincular equipamento</a>
+  <a *ngIf="account.level != 'COLABORADOR'" routerLink="list-allocations">Equipamentos vinculados</a>
   <a routerLink="list-equipments">Equipamentos</a>
   <a routerLink="list-employees">Colaboradores</a>
   <a routerLink="list-projects">Projetos</a>
-  <a *ngIf="account.level === 'GESTOR'" routerLink="list-accounts">Usuários</a><!-- depois trocar para suporte-->
-  <a *ngIf="account.level === 'GESTOR'" routerLink="insert-account">Cadastrar usuário</a><!-- depois trocar para suporte-->
+  <a *ngIf="account.level === 'SUPORTE'" routerLink="list-accounts">Usuários</a><!-- depois trocar para suporte-->
+  <a *ngIf="account.level === 'SUPORTE'" routerLink="insert-account">Cadastrar usuário</a><!-- depois trocar para suporte-->
 </div>
 
 <!-- BARRA DE LOGIN -->

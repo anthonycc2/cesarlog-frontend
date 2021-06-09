@@ -19,7 +19,7 @@ export class UpdateAllocationComponent implements OnInit {
     private router: Router,
     private functionsPackage: FunctionsPackage) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     
     this.allocationService.getAllocation(this.id)
@@ -32,25 +32,26 @@ export class UpdateAllocationComponent implements OnInit {
       });
   }
 
-  update() {
+  update(): void {
     var dDateTime = new Date();
     this.allocation.locationDate = this.functionsPackage.formatDate(dDateTime);
     
     this.allocationService.updateAllocation(this.allocation)
       .subscribe(data => {
         console.log(data);
+        this.functionsPackage.showSucessMessage();
       }, error => {
         console.log(error);
         this.functionsPackage.showErrorMessage();
       });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.update();
     this.gotoList();
   }
 
-  gotoList() {
+  gotoList(): void {
     this.router.navigate(['list-allocations']);
   }
 }

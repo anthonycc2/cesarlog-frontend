@@ -1,5 +1,6 @@
 <div class="form-general">
-    <h1><strong>Cadastrar usuário</strong></h1>
+    <h1>Cadastrar usuário</h1>
+    <hr>
     <form (ngSubmit)="onSubmit()">
         <table>
             <tr>
@@ -24,12 +25,12 @@
             </tr>
 
             <tr>
-                <td><label for="employee">Nível:</label></td>
+                <td><label for="level">Nível:</label></td>
                 <td>
                     <select [(ngModel)]="account.level" id="level" name="level">
                         <option value="COLABORADOR">Colaborador</option>
                         <option value="GESTOR">Gestor</option>
-                        <option value="SUPERVISOR">Supervisor</option>
+                        <option value="SUPORTE">Suporte</option>
                     </select>
                 </td>
             </tr>
@@ -46,7 +47,7 @@
 
             <tr>
                 <td>
-                    <button type="submit">Salvar</button>
+                    <button type="submit" class="general-button">Salvar</button>
                 <td>
                 <td></td>
             </tr>

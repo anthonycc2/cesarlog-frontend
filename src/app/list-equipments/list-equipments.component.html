@@ -19,8 +19,8 @@
           <td>{{equipment.observation}}</td>
           <td><input type="checkbox" [(ngModel)]="equipment.maintenance" id="maintenance" name="maintenance" disabled></td>
           <td>
-            <button *ngIf="userLevel === 'SUPERVISOR'" (click)="update(equipment.id)" class="general-button">Alterar</button>
-            <button *ngIf="userLevel === 'SUPERVISOR'" (click)="delete(equipment.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
+            <button *ngIf="userLevel === 'SUPORTE'" (click)="update(equipment.id)" class="general-button">Alterar</button>
+            <button *ngIf="userLevel === 'SUPORTE'" (click)="delete(equipment.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
           </td>
         </tr>
       </tbody>

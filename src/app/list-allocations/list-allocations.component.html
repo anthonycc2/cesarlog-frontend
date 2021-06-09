@@ -23,8 +23,6 @@
             <td>{{allocation.locationDate}}</td>
             <td>
                 <button (click)="update(allocation.id)" class="general-button">Alterar</button>
-                <button *ngIf="allocation.status === 'PENDENTE'" (click)="confirm(allocation)" class="danger-button" style="margin-left: 10px">Confirmar</button>
-                <button *ngIf="allocation.status === 'ACEITO'" (click)="return(allocation)" class="danger-button" style="margin-left: 10px">Devolver</button>
                 <button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Deletar</button>
             </td>
           </tr>

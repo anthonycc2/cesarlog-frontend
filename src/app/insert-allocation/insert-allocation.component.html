@@ -1,5 +1,6 @@
 <div class="form-general">
-    <h1><strong>Vincular Equipamento</strong></h1>
+    <h1>Vincular Equipamento</h1>
+    <hr>
     <form (ngSubmit)="onSubmit()">
         <table>
             <tr>
@@ -24,18 +25,10 @@
 
             <tr>
                 <td>
-                    <button type="submit">Salvar</button>
+                    <button type="submit" class="general-button">Salvar</button>
                 <td>
                 <td></td>
             </tr>
         </table>
     </form>
-</div>
-
-<!--div [hidden]="!submittedForm">
-    <h4><i class="material-icons">check_circle</i> Cadastro submetido com sucesso!</h4>
-</div-->
-
-<div *ngIf="showErrorMessage" class="errorMessage">
-    <h4><i class="material-icons">highlight_off</i> Ocorreu um erro!</h4>
 </div>

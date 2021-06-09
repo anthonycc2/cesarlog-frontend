@@ -39,7 +39,7 @@ export class AppComponent {
   tryLogin(): void {
     this.accountService.getAccountByLogin(this.userLogin)
     .subscribe(data => {
-      console.log(data)
+      //console.log(data)
       this.account = data;
     }, error => {
       console.log(error);
@@ -74,6 +74,7 @@ export class AppComponent {
       window.localStorage.setItem('user_login', this.account.login);
       window.localStorage.setItem('user_level', this.account.level);
       window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
+      window.localStorage.setItem('user_project_id', this.account.employee.project.id.toString());
       alert("O usuário logado é: " + this.account.login);
     } else {
       this.account = new Account();
@@ -112,7 +113,6 @@ export class AppComponent {
       alert("Login ou senha inválidos!");
     }
   }*/
-
 
   logout(): void {
     this.userLoggedIn = false;

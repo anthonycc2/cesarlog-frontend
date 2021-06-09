@@ -18,29 +18,31 @@ export class ListAccountsComponent implements OnInit {
     private router: Router,
     private functionsPackage: FunctionsPackage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
 
     this.reloadData();
   }
 
-  reloadData() {
+  reloadData(): void {
     this.accounts = this.accountService.getAccountList();
   }
 
-  delete(id: number) {
+  delete(id: number): void {
     if (confirm("Confirma a exclusão?")) {
       this.accountService.deleteAccount(id)
-      .subscribe(
-        data => {
+      .subscribe(data => {
           console.log(data);
+          this.functionsPackage.showSucessMessage();
           this.reloadData();
-        }, error => console.log(error));
+        }, error => {
+          console.log(error);
+          this.functionsPackage.showErrorMessage();
+        });
       }
-  
   }
 
-  update(id: number) {
+  update(id: number): void {
     this.router.navigate(['update-account', id]);
   }
 

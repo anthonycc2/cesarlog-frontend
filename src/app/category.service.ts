@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Category } from './category';
+import { apiUrl } from './service-path';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CategoryService {
 
   category: Category;
 
-  private baseUrl = 'http://localhost:8080/category';
+  private baseUrl = apiUrl + '/category';
 
   constructor(private http: HttpClient) {
     this.category = new Category();

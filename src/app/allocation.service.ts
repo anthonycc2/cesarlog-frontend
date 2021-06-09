@@ -2,13 +2,14 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Allocation } from './allocation';
+import { apiUrl } from './service-path';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AllocationService {
 
-  private baseUrl = 'http://localhost:8080/allocation';
+  private baseUrl = apiUrl + '/allocation';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,10 @@ export class AllocationService {
 
   getAllocationListByEmployee(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/employee/${id}`);
+  }
+
+  getAllocationListByProject(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/project/${id}`);
   }
 
   //POST method
