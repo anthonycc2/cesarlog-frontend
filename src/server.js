@@ -1,14 +1,15 @@
-const express =  require('express');
+//Install express server
+const express = require('express');
+const path = require('path');
+
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/cesarlog-frontend'));
 
-app.use(express.static(__dirname + '/dist/cesarlog-frontend'));
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/cesarlog-frontend/'}),
+);
 
-app.get('/*', (req, res) => {
-	res.sendFile(__dirname + '/dist/cesarlog-frontend/index.html');
-});
-
-app.listen(PORT, () => {
-	console.log('Server initializated on port ' + PORT);
-});
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
