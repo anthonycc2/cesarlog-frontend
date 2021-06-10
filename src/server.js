@@ -14,8 +14,9 @@ app.get('/*', (req, res) =>
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);*/
 
+///////// OUTRO MODO - FALHOU /////////
 //Importa as dependências que acabamos de instalar
-const express = require("express");
+/*const express = require("express");
 const path = require("path");
 
 const app = express();
@@ -28,4 +29,20 @@ app.get("/*", function (req, res) {
 });
 
 // Inicia a aplicação pela porta configurada
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);*/
+
+
+const express =  require('express');
+const app = express();
+
+const PORT = process.env.PORT || 8080;
+
+app.use(express.static(__dirname + '/dist/cesarlog-frontend'));
+
+app.get('/*', (req, res) => {
+	res.sendFile(__dirname + '/dist/cesarlog-frontend/index.html');
+});
+
+app.listen(PORT, () => {
+	console.log('Server initializated on port ' + PORT);
+}); 
