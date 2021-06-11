@@ -6,21 +6,21 @@
             <tr>
                 <td><label for="login">Login:</label></td>
                 <td>
-                    <input type="text" class="form-control" id="login" required [(ngModel)]="account.login" name="login" disabled>
+                    <span id="login" class="static-field">{{ account.login }}</span>
                 </td>
             </tr>
 
             <tr>
-                <td><label for="password">Senha:</label></td>
+                <td><label for="newPassword1">Senha:</label></td>
                 <td>
-                    <input type="password" class="form-control" id="password" required [(ngModel)]="account.password" name="password">
+                    <input type="password" class="form-control" id="newPassword1" required [(ngModel)]="newPassword1" name="newPassword1">
                 </td>
             </tr>
 
             <tr>
-                <td><label for="password2">Confirmar senha:</label></td>
+                <td><label for="newPassword2">Confirmar senha:</label></td>
                 <td>
-                    <input type="password" class="form-control" id="password2" required [(ngModel)]="password2" name="password2">
+                    <input type="password" class="form-control" id="newPassword2" required [(ngModel)]="newPassword2" name="newPassword2">
                 </td>
             </tr>
 
@@ -38,16 +38,13 @@
             <tr>
                 <td><label for="employee">Colaborador:</label></td>
                 <td>
-                    <select [(ngModel)]="account.employee.id" id="employee" name="employee">
-                        <option *ngFor="let employee of employees | async" [value]="employee.id">{{ employee.name }}
-                        </option>
-                    </select>
+                    <span id="employee" class="static-field">{{ account.employee.name }}</span>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <button type="submit" classs="general-button">Salvar</button>
+                    <button type="submit" class="general-button">Salvar</button>
                 <td>
                 <td></td>
             </tr>

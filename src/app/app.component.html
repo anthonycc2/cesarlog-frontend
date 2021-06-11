@@ -3,7 +3,7 @@
   <img width="40" alt="CESAR_logo" src="../assets/images/cesar-logo.jpg" title="Logo do CESAR">
   <span>Cesar<strong>Log</strong></span>
   <div class="spacer"></div>
-  <i *ngIf="userLoggedIn" id="user-icon" class="material-icons" alt="user-icon" title="Configurações de usuário">perm_identity</i>
+  <i *ngIf="userLoggedIn" id="user-icon" class="material-icons" (click)="changePassword()" alt="user-icon" title="Alterar senha">perm_identity</i>
   {{ account.login }}
   <i *ngIf="userLoggedIn" id="logout-icon" class="material-icons" (click)="logout()" alt="logout-icon" title="Sair">logout</i>
 </header>
@@ -12,15 +12,11 @@
 <div *ngIf="userLoggedIn" class="menu-bar">
   <!--a routerLink="home">Home</a>-->
   <a routerLink="list-my-allocations">Meus equipamentos</a>
-  <a *ngIf="account.level === 'SUPORTE'" routerLink="insert-equipment">Cadastrar equipamento</a>
-  <!--a *ngIf="account.level === 'S'" routerLink="insert-employee">Cadastrar colaborador</a>-->
-  <a *ngIf="account.level != 'COLABORADOR'" routerLink="insert-allocation">Vincular equipamento</a>
   <a *ngIf="account.level != 'COLABORADOR'" routerLink="list-allocations">Equipamentos vinculados</a>
   <a routerLink="list-equipments">Equipamentos</a>
   <a routerLink="list-employees">Colaboradores</a>
   <a routerLink="list-projects">Projetos</a>
-  <a *ngIf="account.level === 'SUPORTE'" routerLink="list-accounts">Usuários</a><!-- depois trocar para suporte-->
-  <a *ngIf="account.level === 'SUPORTE'" routerLink="insert-account">Cadastrar usuário</a><!-- depois trocar para suporte-->
+  <a *ngIf="account.level === 'SUPORTE'" routerLink="list-accounts">Usuários</a>
 </div>
 
 <!-- BARRA DE LOGIN -->

@@ -46,4 +46,7 @@ export class ListAccountsComponent implements OnInit {
     this.router.navigate(['update-account', id]);
   }
 
+  insert(): void {
+    this.router.navigate(['insert-account']);
+  }
 }

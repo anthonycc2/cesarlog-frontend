@@ -29,7 +29,8 @@ export class ListAllocationsComponent implements OnInit {
   }
 
   reloadData(): void {
-    if (window.localStorage.getItem('user_level') === "GESTOR") {
+    var userLevel = window.localStorage.getItem('user_level');
+    if (userLevel === "GESTOR") {
       var id = parseInt(window.localStorage.getItem('user_project_id'), 10);
       this.allocations = this.allocationService.getAllocationListByProject(id);
     } else {
@@ -56,39 +57,8 @@ export class ListAllocationsComponent implements OnInit {
     this.router.navigate(['update-allocation', id]);
   }
 
-  /*confirm(allocation: Allocation): void {
-    if (confirm("Confirma o vínculo com o equipamento?")) {
-      var dateTime = new Date();
-      allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
-      allocation.status = "ACEITO";
-
-      this.allocationService.updateAllocation(allocation)
-        .subscribe(
-          data => { //(data: any) => {
-            console.log(data);
-            this.reloadData();
-          }, error => { //(error: any) => console.log(error));
-            console.log(error);
-            this.functionsPackage.showErrorMessage();
-          });
-    }
+  insert(): void {
+    this.router.navigate(['insert-allocation']);
   }
 
-  return(allocation: Allocation): void {
-    if (confirm("Confirma a devolução do equipamento?")) {
-      var dateTime = new Date();
-      allocation.allocationDate = this.functionsPackage.formatDate(dateTime);
-      allocation.status = "DEVOLVIDO";
-      
-      this.allocationService.updateAllocation(allocation)
-        .subscribe(
-          data => { //(data: any) => {
-            console.log(data);
-            this.reloadData();
-          }, error => { //(error: any) => console.log(error));
-            console.log(error);
-            this.functionsPackage.showErrorMessage();
-          });
-    }
-  }*/
 }

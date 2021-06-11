@@ -32,7 +32,14 @@ export class InsertAllocationComponent implements OnInit {
     this.allocation = new Allocation();
 
     this.equipments = this.equipmentService.getEquipmentList();
-    this.employees = this.employeeService.getEmployeeList();
+    
+    var userLevel = window.localStorage.getItem('user_level');
+    if (userLevel === 'GESTOR') {
+      var id = parseInt(window.localStorage.getItem('user_project_id'), 10);
+      this.employees = this.employeeService.getEmployeeListByProject(id);
+    } else {
+      this.employees = this.employeeService.getEmployeeList();
+    }
   }
 
   save(): void {

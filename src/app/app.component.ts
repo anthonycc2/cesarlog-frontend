@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-//import { Observable } from 'rxjs';
 import { Account } from './account';
 import { AccountService } from './account.service';
 import { FunctionsPackage } from './functions-package';
@@ -12,17 +11,14 @@ import { FunctionsPackage } from './functions-package';
 export class AppComponent {
   title = 'CesarLog';
 
-  
   userLogin: string;
   userPassword: string;
   userLoggedIn: boolean;
-  //hideFromManager: boolean;
 
-
-  //user: Account;
   account: Account;
 
-  constructor(private accountService: AccountService,
+  constructor(
+    private accountService: AccountService,
     private router: Router,
     private functionsPackage: FunctionsPackage) { }
 
@@ -32,7 +28,6 @@ export class AppComponent {
     this.userPassword = '';
     this.userLoggedIn = false;
     
-    //this.user = new Account();
     this.account = new Account();
   }
 
@@ -51,9 +46,10 @@ export class AppComponent {
       window.localStorage.setItem('user_login', this.account.login);
       window.localStorage.setItem('user_level', this.account.level);
       window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
+      window.localStorage.setItem('user_project_id', this.account.employee.project.id.toString());
 
-      //--------------------------------------------------DESABILITAR ISSO AQUI NO FINAL DE TUDO
-      alert("O usuário logado é: " + this.account.login);
+      //alert("O usuário logado é: " + this.account.login);
+      this.router.navigate(['list-my-allocations']);
     } else {
       this.account = new Account();
       alert("Login ou senha inválidos!");
@@ -61,8 +57,7 @@ export class AppComponent {
   }
 
   //Opção simples para testes
-  tryLogin1(): void {
-
+  /*tryLogin1(): void {
     if (this.userLogin === 'silviom' && this.userPassword === 'meira') {
       this.account.id = 1;
       this.account.login = this.userLogin;
@@ -80,39 +75,11 @@ export class AppComponent {
       this.account = new Account();
       alert("Login ou senha inválidos!");
     }
-  
-  }
-
-  // Opção em desuso
-  /*tryLogin2() {
-    this.userLoggedIn = this.accountService.login(this.user);
-    
-    if (this.userLoggedIn) {
-      this.accountService.getAccountByLogin(this.user.login)
-      .subscribe(data => {
-        console.log(data)
-        this.account = data;
-      }, error => {
-        console.log(error);
-        this.functionsPackage.showErroMessage();
-      });
-      window.localStorage.setItem('user_login', this.account.login);
-      window.localStorage.setItem('user_level', this.account.level);
-      window.localStorage.setItem('user_employee_id', this.account.employee.id.toString());
-      //this.showErrorMessage = false;
-
-      if (this.account.level === "GESTOR") {
-        this.hideFromManager = false;
-      }
-
-      alert("O usuário logado é: " + this.account.login);
-      //window.location.reload();
-    } else {
-      this.account = new Account();
-      //this.showErrorMessage = true;
-      alert("Login ou senha inválidos!");
-    }
   }*/
+
+  changePassword(): void {
+    this.router.navigate(['change-password']);
+  }
 
   logout(): void {
     this.userLoggedIn = false;

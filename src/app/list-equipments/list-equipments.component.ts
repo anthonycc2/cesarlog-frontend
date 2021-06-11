@@ -49,4 +49,9 @@ export class ListEquipmentsComponent implements OnInit {
   update(id: number): void {
     this.router.navigate(['update-equipment', id]);
   }
+
+  insert(): void {
+    this.router.navigate(['insert-equipment']);
+  }
+
 }

@@ -9,8 +9,6 @@ import { UpdateEquipmentComponent } from './update-equipment/update-equipment.co
 import { ListEquipmentsComponent } from './list-equipments/list-equipments.component';
 import { ListEmployeesComponent } from './list-employees/list-employees.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
-import { InsertEmployeeComponent } from './insert-employee/insert-employee.component';
-import { SendMessageComponent } from './send-message/send-message.component';
 import { HomeComponent } from './home/home.component';
 import { InsertAllocationComponent } from './insert-allocation/insert-allocation.component';
 import { ListAllocationsComponent } from './list-allocations/list-allocations.component';
@@ -19,6 +17,8 @@ import { InsertAccountComponent } from './insert-account/insert-account.componen
 import { ListAccountsComponent } from './list-accounts/list-accounts.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { ListMyAllocationsComponent } from './list-my-allocations/list-my-allocations.component';
+import { DetailAllocationComponent } from './detail-allocation/detail-allocation.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,6 @@ import { ListMyAllocationsComponent } from './list-my-allocations/list-my-alloca
     ListEquipmentsComponent,
     ListEmployeesComponent,
     ListProjectsComponent,
-    InsertEmployeeComponent,
-    SendMessageComponent,
     HomeComponent,
     InsertAllocationComponent,
     ListAllocationsComponent,
@@ -37,7 +35,9 @@ import { ListMyAllocationsComponent } from './list-my-allocations/list-my-alloca
     InsertAccountComponent,
     ListAccountsComponent,
     UpdateAccountComponent,
-    ListMyAllocationsComponent
+    ListMyAllocationsComponent,
+    DetailAllocationComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -80,6 +80,12 @@ footer {
   opacity: 80%;
 }
 
+.big-logo {
+  height: 50%;
+  width: 50%;
+  margin-top: 30px;
+}
+
 /************************************ BARRA DE LOGIN ************************************/
 
 .login-bar {
@@ -195,6 +201,12 @@ footer {
 }*/
 
 /********************************************** LISTAGENS **********************************************/
+.explaning-text {
+  background-color: wheat;
+  text-align: justify;
+  margin-bottom: 20px;
+  padding: 10px;
+}
 
 .list-panel {
   margin: 20px;

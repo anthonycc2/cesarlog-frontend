@@ -37,10 +37,10 @@ export class ListMyAllocationsComponent implements OnInit {
 
       this.allocationService.updateAllocation(allocation)
         .subscribe(
-          data => { //(data: any) => {
+          data => { 
             console.log(data);
             this.reloadData();
-          }, error => { //(error: any) => console.log(error));
+          }, error => {
             console.log(error);
             this.functionsPackage.showErrorMessage();
           });

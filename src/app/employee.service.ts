@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from './employee';
-import { apiUrl } from './service-path';
+import { apiUrl } from './service-config';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class EmployeeService {
 
   getEmployeeList(): Observable<any> {
     return this.http.get(`${this.baseUrl}/all`);
+  }
+
+  getEmployeeListByProject(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/project/${id}`);
   }
   
   //POST method

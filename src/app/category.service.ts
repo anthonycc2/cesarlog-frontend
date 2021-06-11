@@ -2,7 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Category } from './category';
-import { apiUrl } from './service-path';
+import { apiUrl } from './service-config';
 
 @Injectable({
   providedIn: 'root'

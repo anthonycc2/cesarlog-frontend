@@ -1,5 +1,8 @@
 <div class="list-panel">
     <h1>Lista de usuários</h1>
+    <p>
+      <button class="general-button" (click)="insert()">Adicionar</button>
+    </p>
     <table width="65%">
       <thead>
         <tr>
@@ -16,7 +19,7 @@
             <td>{{ account.employee.name }}</td>
             <td>
                 <button (click)="update(account.id)" class="general-button">Alterar</button>
-                <button (click)="delete(account.id)" class="danger-button" style="margin-left: 10px">Deletar</button>
+                <button (click)="delete(account.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
             </td>
           </tr>
         </tbody>

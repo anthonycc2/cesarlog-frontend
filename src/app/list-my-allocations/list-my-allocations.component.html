@@ -1,11 +1,12 @@
 <div class="list-panel">
   <h1>Meus equipamentos</h1>
+  <p class="explaning-text">Estes são os equipamentos vinculados a você. Aqui, você pode aceitá-los ou devolê-los. Também é possível atualizar a localização destes equipamentos. Você receberá um e-mail de alerta caso haja equipamentos em sua posse com localização desatualizada há mais de 30 dias.</p>
   <table width="100%">
     <thead>
       <tr>
         <th width="10%">Tombamento</th>
         <th width="10%">Colaborador</th>
-        <th width="15%">Data do vínculo</th> <!-- REMOVER -->
+        <th width="15%">Data do vínculo</th>
         <th width="10%">Status</th>
         <th width="15%">Localização</th>
         <th width="15%">Data da localização</th>
@@ -22,13 +23,12 @@
         <td>{{allocation.locationDate}}</td>
         <td>
           <button *ngIf="allocation.status === 'PENDENTE'" (click)="confirm(allocation)" class="danger-button"
-            style="margin-right: 10px">Confirmar</button>
+            style="margin-right: 10px">Aceitar</button>
           <button *ngIf="allocation.status === 'ACEITO'" (click)="return(allocation)" class="danger-button"
             style="margin-right: 10px">Devolver</button>
           <button (click)="detail(allocation.id)" class="general-button" style="margin-right: 10px">Detalhar</button>
-          <button *ngIf="allocation.status != 'DEVOLVIDO'" (click)="update(allocation.id)"
+          <button *ngIf="allocation.status === 'ACEITO'" (click)="update(allocation.id)"
             class="general-button">Alterar</button>
-          <!--button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Deletar</button-->
         </td>
       </tr>
     </tbody>

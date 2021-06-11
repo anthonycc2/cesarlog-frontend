@@ -1,5 +1,8 @@
 <div class="list-panel">
   <h1>Lista de equipamentos</h1>
+  <p>
+    <button *ngIf="userLevel === 'SUPORTE'" class="general-button" (click)="insert()">Adicionar</button>
+  </p>
   <table width="100%">
     <thead>
       <tr>

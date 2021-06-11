@@ -12,7 +12,7 @@ import { FunctionsPackage } from '../functions-package';
   templateUrl: './insert-account.component.html'
 })
 export class InsertAccountComponent implements OnInit {
-  password2: string;
+  passwordConfirmation: string;
   account: Account;
   employees: Observable<Employee[]> | undefined;
 
@@ -25,14 +25,14 @@ export class InsertAccountComponent implements OnInit {
   ngOnInit(): void {
     this.functionsPackage.verifyAuthenticatedUser(this.router);
 
-    this.password2 = "";
+    this.passwordConfirmation = "";
     this.account = new Account();
 
     this.employees = this.employeeService.getEmployeeList();
   }
 
   save(): void {
-    if (this.account.password === this.password2) {
+    if (this.account.password === this.passwordConfirmation) {
 
       this.accountService.addAccount(this.account)
         .subscribe(data => {

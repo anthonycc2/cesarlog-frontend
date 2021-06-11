@@ -1,6 +1,8 @@
 <div class="list-panel">
-    <h2>Lista de equipamentos vinculados</h2>
-    <hr>
+    <h1>Lista de equipamentos vinculados</h1>
+    <p>
+      <button class="general-button" (click)="insert()">Vincular</button>
+    </p>
     <table width="100%">
       <thead>
         <tr>
@@ -23,7 +25,7 @@
             <td>{{allocation.locationDate}}</td>
             <td>
                 <button (click)="update(allocation.id)" class="general-button">Alterar</button>
-                <button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Deletar</button>
+                <button (click)="delete(allocation.id)" class="danger-button" style="margin-left: 10px">Excluir</button>
             </td>
           </tr>
         </tbody>
